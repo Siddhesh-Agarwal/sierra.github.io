@@ -122,7 +122,7 @@
      which takes no arguments.
      <br/>
      <br/>
-     Initialization of CSS can be done using addInitc() and it is not mandatory.
+     Initialization of CSS can be done using addInitc() and it is not mandatory. On a different note, any color code works with CSS arguments. HEX, RGB or anything else.
      <br/>
      <br/>
      <code>
@@ -182,7 +182,7 @@
      <code>
       cTags
      </code>
-     stand for 'cssTags' as a simpler way of adding CSS to non-native HTML tags.
+     stand for 'cssTags' as a simpler way of adding CSS to non-native HTML tags. Please check writeCSS() under 'Other Functions' for custom styling
      <code>
       cTags()
      </code>
@@ -195,7 +195,7 @@
     <pre>
     
     a = cTags('tag1')
-    a.css(color='blue', font_family="Times New Roman", font_size="20px")
+    a.css(color='#0f286e', font_family="Times New Roman", font_size="20px")
 
     # The object css takes in multiple arguments and applies them to the tag mentioned inside of cTags().
     a.css(color='black', font_family='Arial', font_weight=False, text_align=False, font_size=False, background_color=False, background=False,  <br/> margin_top=False, margin_bottom=False, margin_left=False, margin_right=False, border=False, display='block', padding=False, height=False,  <br/> width=False, line_break=False, line_height=False, overflow=False, margin=False, box_shadow=False)
@@ -265,7 +265,7 @@
 
     a = tTags(p=True)
     a.start_p('Hello World!', close=True)
-    a.css(color='green', font_family="Times New Roman", font_size="10px")
+    a.css(color='#6e560f', font_family="Times New Roman", font_size="10px")
 
     # a.start_p(text, close=bool(False)) is used to start the paragraph and takes in one mandatory argument 'text', which is the paragraph content.  <br/>    # Arg close, if True, closes the paragraph once text is entered. Arg 'close' is set to False by default
     
@@ -501,7 +501,7 @@
     font_family="Arial", font_weight=False, text_align=False, font_size=False, margin=False,
     background_color='white')
 
-    
+    # Do keep in mind that any color code (eg. RGB, HEX) can be used to add color
 </pre>
    </div>
    <div class="other_funcs">
@@ -536,11 +536,11 @@
     writeCSS(tag, *args)
     # Enters custom CSS arguments into any given tag
 
-    # writeCSS('marquee', {"font-size": "15px", "background-color": "whitesmoke"})
+    # writeCSS('marquee', {"font-size": "15px", "background-color": "rgb(240, 237, 228)"})
     # Output in style.css
     # marquee {
     #  font-size: 15px;
-    #  background-color: whitesmoke;
+    #  background-color: rgb(240, 237, 228);
     #  }
     
     var b
