@@ -527,7 +527,8 @@
     # inner(bool, optional)   : Determines if bullet lists have to be added inside of a bullet list item. False by default
           
 
-    # closeTags('ol' OR 'ul') has to be done for every inner list added. Here', I've added one inner list and hence just one closeTags() will suffice
+    # closeTags('ol' OR 'ul') has to be done for every inner list added. That is, for every addBullet(inner=True), 
+    # a closeTags() must be used. Here', I've added one inner list and hence just one closeTags() will suffice.
     # If ul is set to True for an inner list, it must be closeTags('ul'). If False (default), closeTags('ol') 
     # It isn't needed if inner is set to False (default)
 
@@ -602,7 +603,8 @@
     # Hello
     # World!
 
-
+    closeBody()
+    # Closes the body tag (See openBody())
     closeHTML()
     # Closes the HTML tag
     
