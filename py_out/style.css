@@ -1,0 +1,88 @@
+
+.logo {
+    margin-top: 0px;
+    margin-bottom: False;
+    margin-left: 35%;
+    margin-right: False;
+    border: False;
+    display: False;
+    height: False;
+    width: False;
+    margin: False;
+    vertical-align: False;
+    opacity: False;
+    filter: False;
+}
+p {
+    color: black;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: False;
+    text-align: False;
+    font-size: False;
+    background-color: False;
+    background: False;
+    margin-top: False;
+    margin-bottom: False;
+    margin-left: False;
+    margin-right: False;
+    border: False;
+    display: block;
+    padding: False;
+    height: False;
+    width: False;
+    line-break: False;
+    line-height: False;
+    overflow: False;
+    margin: False;
+    box-shadow: False;
+}
+header {
+    color: blue;
+    font-family: 'Prompt', sans-serif;
+    text-align: left;
+    font-size: 30px;
+    background-color: False;
+    padding: False;
+    height: False;
+    width: False;
+    line-break: False;
+    line-height: False;
+    border: False;
+    margin: False;
+}
+body {
+    background-color: white;
+    background-image: False;
+    opacity: 0.8;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: False;
+    background-repeat: False;
+}
+pg_title {
+    color: black;
+    font-family: 'Prompt', sans-serif;
+    font-weight: False;
+    text-align: False;
+    font-size: 20px;
+    background-color: False;
+    background: False;
+    margin-top: 10px;
+    margin-bottom: False;
+    margin-left: False;
+    margin-right: False;
+    border: False;
+    display: block;
+    padding: False;
+    height: False;
+    width: False;
+    line-break: False;
+    line-height: False;
+    overflow: False;
+    margin: False;
+    box-shadow: False;
+}
+pre {
+	font-size: 15px;
+	background-color: whitesmoke;
+}

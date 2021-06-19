@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+ <meta charset="utf-8"/>
+ <head>
+  <title>
+   Documentation - Sierra -- 1.0.1
+  </title>
+  <link href="style.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300&amp;display=swap" rel="stylesheet"/>
+  <a href="https://github.com/BrainStormYourWayIn/sierra">
+   <img alt="Sierra logo_white" class="logo" src="white_sierra.JPG"/>
+  </a>
+  <header>
+   Documentation - Sierra -- 1.0.1
+  </header>
+ </head>
+ <body>
+  <pg_title>
+   Working with Python Outputs
+  </pg_title>
+  <div class="py_outputs">
+   <p>
+    Displaying Python outputs on your web applications are actually pretty simple with
+    Sierra. To work with this, you can use
+    <code>
+     'writeHTML()'
+    </code>
+    , which has been covered on the
+    main page of the documentation. Using f-strings is an easier way to print variables onto your
+    work.
+    <code>
+     writeHTML(f'''{var}''')
+    </code>
+    or
+    <code>
+     a.start_p(f'''{var}''')
+    </code>
+    , both 
+    work.
+    <br/>
+    <br/>
+    Say you've used
+    <code>
+     getTable()
+    </code>
+    to load in
+    a .csv file with pandas and write some quick code for displaying each row as a list:
+   </p>
+   <pre>
+  
+        this      is        a          csv
+    0   word      word1     word2      word3
+    1   test1     test2     test3      test4
+    2   foo1      foo2      foo3       foo4
+
+    for i in range(0, 3):
+    for g in range(1, 4):
+        if i+1==g:
+            a = f'''r{g} = {list(df.iloc[i])}{b}'''            # var 'b' stands for &lt;br&gt; See 'Other Functions'
+            writeHTML(a)
+            # or if you want it on a paragraph
+            a = tTags(True)
+            a.start_p(a)
+
+            Output:
+            # r1 = ['word', 'word1', 'word2', 'word3']
+            # r2 = ['test1', 'test2', 'test3', 'test4']
+            # r3 = ['foo1', 'foo2', 'foo3', 'foo4']
+
+        
+</pre>
+   <p>
+    The output is now displayed on the webpage! Of course, you can style it
+    the way you want depending on the tag you enclosed it in.
+   </p>
+  </div>
+ </body>
+</html>
