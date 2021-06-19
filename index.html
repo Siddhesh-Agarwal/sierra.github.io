@@ -509,6 +509,56 @@
     # Do keep in mind that any color code (eg. RGB, HEX) can be used to add color
 </pre>
    </div>
+   <div class="bullets">
+    <pg_title>Working with Bullet lists</pg_title>
+<p>
+    Bullet lists can be passed in as regular lists on Sierra to display on the web application using <code>addBullets()</code>
+    It takes in one mandatory argument and four optional arguments. The first argument <code>points</code>
+    takes in a list of points to add and adds them in.
+</p>
+<pre>
+
+    addBullets(points, ul=False, start="1", type="False", inner=False)
+
+    # points(list, compulsory): Takes in a list of bullets to add
+    # ul(bool, optional)      : If set to True, it adds bullets (unordered) rather than an ordered list
+    # start(str, optional)    : Starts the ordered list from a particular starting position
+    # type(str, optional)     : Sets the type of ordered/unordered list
+    # inner(bool, optional)   : Determines if bullet lists have to be added inside of a bullet list item. False by default
+          
+
+    # closeTags('ol' OR 'ul') has to be done for every inner list added. Here', I've added one inner list and hence just one closeTags() will suffice
+    # If ul is set to True for an inner list, it must be closeTags('ul'). If False (default), closeTags('ol') 
+    # It isn't needed if inner is set to False (default)
+
+    
+    a = ['this', 'is', 'a', 'list']
+    addBullets(points=a, inner=True, ul=True)
+    addBullets(points=a, inner=False, type='i')
+    closeTags('ul') 
+
+    # Output:
+
+</pre>
+    <ul>
+        <li>this</li>
+        <li>is</li>
+        <li>a</li>
+        <li>list</li>
+        <ol type='i'>
+            <li>this</li>
+            <li>is</li>
+            <li>a</li>
+            <li>list</li>
+        </ol>
+    </ul>
+<pre>
+
+    As you can see, an inner list is created with type 'i'
+    You can even set start to '5', and the inner list starts with a Roman 'v'
+
+</pre>
+</div>
    <div class="other_funcs">
     <pg_title>
      Other functions
