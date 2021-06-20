@@ -3,7 +3,7 @@
  <meta charset="utf-8"/>
  <head>
   <title>
-   Documentation - Sierra -- 1.0.1
+   Documentation - Sierra -- 1.1.0
   </title>
   <link href="style.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300&amp;display=swap" rel="stylesheet"/>
@@ -23,10 +23,23 @@
    . Using this library will create an 'index.html' and a 'style.css' in the same directory, and index.html can be viewed from there.
   </p>
   <ul>
+   <li><a href="#tags">Tags - Open and close</a></li>
+   <li><a href="#cTags">Working with CSS for XML tags</a></li>
+   <li><a href="#tTags">Using division, section and p tags (with CSS)</a></li>
+   <li><a href="#image">Adding images (with CSS)</a></li>
+   <li><a href="#tables">Working with tables - Pandas supported (with CSS)</a></li>
+   <li><a href="#bullets">Working with Bullet lists (ordered and unordered)</a></li>
+   <li><a href="#other_funcs">Other functions</a></li>
+   <ol type="i">
+    <li>custom CSS styling arguments</li>
+    <li>custom HTML text</li>
+    <li>codeblocks, breaks and hrefs</li>
+   </ol></ul>
+  <ul>
    <li><a href="https://brainstormyourwayin.github.io/sierra.github.io/py_out/index.html">Working with Python Outputs</a></li>
   </ul>
   <header>
-   Documentation - Sierra -- 1.0.1
+   Documentation - Sierra -- 1.1.0
   </header>
  </head>
  <body>
@@ -50,7 +63,7 @@
     LICENSE
    </a>
    before moving forward.
-   <div class="starting_off">
+   <div id="starting_off">
     <p>
      First, let us import the library
      <br/>
@@ -152,7 +165,7 @@
 </pre>
     </p>
    </div>
-   <div class="tags">
+   <div id="tags">
     <pg_title>
      Tags - Open and close
     </pg_title>
@@ -170,7 +183,7 @@
         
 </pre>
    </div>
-   <div class="cTags">
+   <div id="cTags">
     <pg_title>
      Working with CSS for XML tags
     </pg_title>
@@ -230,7 +243,7 @@
         
 </pre>
    </div>
-   <div class="tTags">
+   <div id="tTags">
     <pg_title>
      Using division, section and p tags
     </pg_title>
@@ -341,7 +354,7 @@
         
 </pre>
    </div>
-   <div class="image">
+   <div id="image">
     <pg_title>
      Adding images
     </pg_title>
@@ -413,9 +426,9 @@
     
 </pre>
    </div>
-   <div class="tables">
+   <div id="tables">
     <pg_title>
-     Adding a table (pandas supported)
+     Working with tables (pandas supported)
     </pg_title>
     <p>
      Adding a table could never have been easier with
@@ -509,7 +522,7 @@
     # Do keep in mind that any color code (eg. RGB, HEX) can be used to add color
 </pre>
    </div>
-   <div class="bullets">
+   <div id="bullets">
     <pg_title>Working with Bullet lists</pg_title>
 <p>
     Bullet lists can be passed in as regular lists on Sierra to display on the web application using <code>addBullets()</code>
@@ -560,7 +573,7 @@
 
 </pre>
 </div>
-   <div class="other_funcs">
+   <div id="other_funcs">
     <pg_title>
      Other functions
     </pg_title>
@@ -588,16 +601,17 @@
 
     writeHTML(text)
     # Enters any text inside into the web application
+    
 
     writeCSS(tag, *args)
     # Enters custom CSS arguments into any given tag
-
     # writeCSS('marquee', {"font-size": "15px", "background-color": "rgb(240, 237, 228)"})
-    # Output in style.css
+    # Output in style.css:
     # marquee {
     #  font-size: 15px;
     #  background-color: rgb(240, 237, 228);
     #  }
+    
     
     var b
     # The variable 'b' can be used to break a sentence into the next line.
