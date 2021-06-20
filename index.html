@@ -575,7 +575,9 @@
     
     autoPrettify()
     # Improve overall look of code and close all tags automatically (if not already done)
-    # Warning: Auto prettifying also involves auto closing HTML tags which may not be accurate if not already closed and 
+    # With autoPrettify(), you needn't close the body tag or the HTML tag or any tag, actually. 
+    # Using it at the end of development closes all tags automatically if not closed already.
+    # Auto prettifying also involves auto closing HTML tags which may not be accurate if not already closed and 
     # are not recommended. Further development may run into issues. Please close tags manually if unsure.
     
     href(link:str, text:str)
