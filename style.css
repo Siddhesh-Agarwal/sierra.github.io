@@ -109,8 +109,9 @@ copyrights {
     margin: False;
     box-shadow: False;
 }
-ul {
+ul,
+ol {
     font-family: 'Big Shoulders Stencil Display', cursive;
-    font-size: '15px';
+    font-size: '20px';
 }
 
