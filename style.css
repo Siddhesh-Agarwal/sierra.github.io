@@ -114,4 +114,24 @@ ol {
     font-family: 'Josefin Sans', sans-serif;
     font-size: '22px';
 }
+a:link {
+  color: rgb(114, 166, 161);
+  background-color: transparent;
+  text-decoration: none;
+}
+a:visited {
+  color: rgb(23, 222, 9);
+  background-color: transparent;
+  text-decoration: none;
+}
+a:hover {
+  color: rgb(212, 36, 42);
+  background-color: transparent;
+  text-decoration: none;
+}
+a:active {
+  color: rgb(212, 36, 145);
+  background-color: transparent;
+  text-decoration: none;
+}
 
