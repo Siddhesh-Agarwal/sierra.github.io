@@ -34,6 +34,7 @@ p {
     line-height: False;
     overflow: False;
     margin: False;
+    opacity: 0.8;
     box-shadow: False;
 }
 header {
