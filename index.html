@@ -3,7 +3,7 @@
  <meta charset="utf-8"/>
  <head>
   <title>
-   Documentation - Sierra -- 1.1.5
+   Documentation - Sierra -- 1.2.0
   </title>
   <link href="style.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300&amp;display=swap" rel="stylesheet"/>
@@ -39,6 +39,8 @@
    <br>
    <li><a href="#bullets">Working with Bullet lists (ordered and unordered)</a></li>
    <br>
+   <li><a href="#des_lists">Creating description lists</a></li>
+   <br>
    <li><a href="#other_funcs">Other functions</a></li>
    <ol type="i">
     <br>
@@ -50,7 +52,7 @@
    <li><a href="https://brainstormyourwayin.github.io/sierra.github.io/py_out/index.html">Working with Python Outputs</a></li>
   </ul><br>
   <header>
-   Documentation - Sierra -- 1.1.5
+   Documentation - Sierra -- 1.2.0
   </header><br>
  </head>
  <body>
@@ -93,7 +95,6 @@
      Once imported, the first line of syntax is mandatory.
     </p>
     <pre>
-    
 
     title('Your page title')
 
@@ -126,7 +127,7 @@
     # line_height (str, optional)      : Line height. Defaults to False. 
     
     # You might notice styling is a bit complicated with head(). However, this method of styling only applies to head(), styling gets much 
-    # easier with other tags and custom styling arguments, especially, with writeCSS()  (See 'Other Functions')
+    # easier with other tags and custom styling arguments, especially, with .css() and writeCSS()  
     
     
         
@@ -288,9 +289,9 @@
     </p>
     <pre>
     
-    tTags(p=False, div_class='False', sec_class='False')
+    tTags(p=True, div_class='False', sec_class='False')
 
-    # p is a bool value, the name of the class is given to &lt;div&gt; and &lt;section&gt; in the second and third arguments respectively, if required
+    # p is a bool value, the name of the class is given to &lt;div&gt; and &lt;section&gt; in the second and third arguments respectively, if desired
 
     a = tTags(p=True)
     a.start_p('Hello World!', close=True)
@@ -302,26 +303,30 @@
 </pre>
     <p>
      CSS automatically applies to the tag whose argument has been mentioned in tTags().
-    Multiple tags can be opened at once in any combination too but if this is done, CSS automatically applies the same arguments in a.css() to all tTags being used. It is hence recommended to open tags one at a time.
-     <br/>
+    Multiple tags can be opened at once in any combination too but if this is done, CSS automatically applies the same arguments in a.css() to all tTags being used. It is hence recommended to open div/sec/p tags one at a time.
+     <br/><br/>
      Once the required tags are opened,
      <code>
-      a.start_div(takes no args)
+      a.start_div(*args)
      </code>
      or
      <code>
-      a.start_sec(takes no args)
+      a.start_sec(*args)
      </code>
      or
      <code>
       a.start_p()
      </code>
-     is used to open the tag mentioned in tTags().
+     is used to open the tag mentioned in tTags(). Adding a class to the division/section tag is not compulsory anymore (v1.2.0).
+     <br/><br/>
+     Global and event attributes can be added to division and section tags using <code>arg *args</code>.
+     <code>a.start_div("id='some_id' title='some_title'")</code> adds attributes <code>id='some_id'</code> and <code>title='some_title'</code> 
+     to the div tag. The same applies to the section tag too
     </p>
     <pre>
 
     a = tTags(div_class='newClass')
-    a.start_div()                   # Takes no argument
+    a.start_div("id='some_id'")                   
     a.css(color='rgb(61, 37, 49)', font_family="Arial")
 
          # ---Content of the division---
@@ -329,7 +334,7 @@
     closeTags('div')                 # Close &lt;div&gt;
 
     a = tTags(sec_class='anotherClass')
-    a.start_sec()                    # Takes no argument
+    a.start_sec()                    
     a.css(color='rgb(38, 62, 89)', font_family="Times New Roman")
 
          # ---Content of the section---
@@ -337,7 +342,7 @@
     closeTags('section')              # Close &lt;section&gt;
 
 
-    # The object css takes in multiple arguments and applies them to the tag(s) mentioned inside of cTags().
+    # The object css takes in multiple arguments and applies them to the tag(s) mentioned inside of tTags().
     a.css(color='black', font_family='Arial', font_weight='False', text_align='False', font_size='False', background_color='False',  <br/> background='False', margin_top='False', margin_bottom='False', margin_left='False', margin_right='False', border='False', display='block',  <br/> padding='False', height='False', width='False', line_break='False', line_height='False', overflow='False', margin='False', box_shadow='False')
     
     # color (str, optional)            : CSS Color parameter. Defaults to 'black'.
@@ -478,13 +483,13 @@
      <code>
       createTable()
      </code>
-     . It takes in two arguments:
+     . It takes in two mandatory arguments:
      <code>
-      cols:list
+      heads:list
      </code>
      and
      <code>
-      rows
+      rows:list
      </code>
      , where
      <code>
@@ -492,7 +497,7 @@
      </code>
      is a list of lists.
      <code>
-      cols
+      heads
      </code>
      is a list that contains the header row, which is basically the title of each column.
      <code>
@@ -507,7 +512,7 @@
     r1 = ['kane', 'grealish', 'sancho', 'foden']
     r2 = ['mount', 'rice', 'chilwell', 'stones']
     r = [r1, r2]
-    a.createTable(cols=c, rows=r)
+    a.createTable(heads=c, rows=r)
 
     # Outputs table:
 
@@ -518,8 +523,13 @@
 
     
 </pre>
+<p>
+    Global attributes can be added to <code>createTable()</code> using <code>arg *args</code>. 
+    <code>createTable(heads, rows, "id='some_id' lang='en'")</code> adds attributes <code>id='some_id'</code> and <code>lang='en'</code> 
+    to the &lt;table> tag. You can add a <code>style</code> attribute too, if you just want to add a single styling attribute to it and not use <code>.css</code>, if the need suits you
+</p>
     <p>
-     Of course, CSS can be added with
+     Of course, CSS can also be added with
      <code>
       a.css()
      </code>
@@ -584,6 +594,47 @@
 
 </pre>
 </div>
+<div id="des_lists">
+    <pg_title>Creating description lists</pg_title>
+    <p>Description lists can be created with <code>des_lists()</code>. Just enter a list of lists as <code>arg def_list</code>
+    and you're good to go.</p>
+    <pre>
+    
+    def_lists(def_list, *args)
+
+    Args:
+    def_list(list, compulsory): Takes in a list of lists and creates a description list on it
+    *args: To use global attributes, if required. Enter them within quotes, not comma-separated
+
+    You can use global attributes with *args. For example,
+    def_lists(a, "class='dl-class' id='some_id'")
+    is equivalent to &lt;dl class=dl-class id=some_id> for the starting tag
+    </pre>
+    <p>
+        Here's how you use it:
+    </p>
+    <pre>
+    
+    a = [[['coffee', 'tea'], ['black coffee', 'black tea']], [['sierra'], ['this', 'is', 'easy']]]
+    def_lists(a)
+
+    Output on the web application:
+
+    </pre>
+    <dl>
+    <dt>coffee</dt>
+    <dt>tea</dt>
+    <dd>black coffee</dd>
+    <dd>black tea</dd>
+    <dt>sierra</dt>
+    <dd>this</dd>
+    <dd>is</dd>
+    <dd>easy</dd>
+    </dl>
+    <p>If you see <code>a</code> closely, there are two lists within it. Within each of those two lists are
+    another two lists. The first of them contains the description term(s), and the second one contains the 
+description element(s) themselves/itself. Be careful while enclosing them within the lists!</p>
+</div>
    <div id="other_funcs">
     <pg_title>
      Other functions
@@ -645,9 +696,11 @@
    </div>
    <div class="copyrights">
     <copyrights>
-     Copyright Licenses Used
+     Licenses
     </copyrights>
     <pre>
+
+See <a href="https://github.com/BrainStormYourWayIn/sierra/blob/main/LICENSE">LICENSE</a>
 
 Pandas (pandas) -- table
 
