@@ -485,7 +485,7 @@
      </code>
      . It takes in two mandatory arguments:
      <code>
-      cols:list
+      heads:list
      </code>
      and
      <code>
@@ -497,7 +497,7 @@
      </code>
      is a list of lists.
      <code>
-      cols
+      heads
      </code>
      is a list that contains the header row, which is basically the title of each column.
      <code>
@@ -512,7 +512,7 @@
     r1 = ['kane', 'grealish', 'sancho', 'foden']
     r2 = ['mount', 'rice', 'chilwell', 'stones']
     r = [r1, r2]
-    a.createTable(cols=c, rows=r)
+    a.createTable(heads=c, rows=r)
 
     # Outputs table:
 
