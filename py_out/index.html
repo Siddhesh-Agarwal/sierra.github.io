@@ -3,75 +3,144 @@
  <meta charset="utf-8"/>
  <head>
   <title>
-   Documentation - Sierra -- 1.1.0
+   Documentation | Sierra - 2.0.0
   </title>
   <link href="style.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300&amp;display=swap" rel="stylesheet"/>
-  <a href="https://github.com/BrainStormYourWayIn/sierra">
-   <img alt="Sierra logo_white" class="logo" src="white_sierra.JPG"/>
-  </a>
-  <header>
-   Documentation - Sierra -- 1.1.0
-  </header>
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Signika+Negative&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&amp;display=swap" rel="stylesheet"/>
+  <img alt="Sierra" href="https://github.com/BrainStormYourWayIn/sierra" src="white_sierra.JPG"/>
+  <h1>
+   Documentation - Sierra v2.0.0
+  </h1>
  </head>
  <body>
-  <pg_title>
-   Working with Python Outputs
-  </pg_title>
-  <div class="py_outputs">
+  <div class="python_out">
+   <pg_title>
+    Working with Python Outputs, Loops and Functions
+   </pg_title>
    <p>
-    Displaying Python outputs on your web applications are actually pretty simple with
-    Sierra. To work with this, you can use
+    Displaying Python outputs on your web applications are actually pretty simple with Sierra. 
+    To work with this, you can use
     <code>
-     'writeHTML()'
-    </code>
-    , which has been covered on the
-    main page of the documentation. Using f-strings is an easier way to print variables onto your
-    work.
-    <code>
-     writeHTML(f'''{var}''')
+     writeWA()
     </code>
     or
     <code>
-     a.start_p(f'''{var}''')
+     p()
     </code>
-    , both 
-    work.
-    <br/>
-    <br/>
-    Say you've used
-    <code>
-     getTable()
-    </code>
-    to load in
-    a .csv file with pandas and write some quick code for displaying each row as a list:
+    , which has been covered on the main page of the 
+    documentation. You can print variables, output functions, use loops, conditions or anything.
+   </p>
+   <p>
+    Say you've loaded in a .csv file with pandas and write some quick code for displaying 
+    each row as a list:
    </p>
    <pre>
-  
+        
+    import pandas as pd
+    from sierra import *
+
+    df = pd.read_csv('path/to/the/file.csv')
+    df
+
         this      is        a          csv
+
     0   word      word1     word2      word3
     1   test1     test2     test3      test4
     2   foo1      foo2      foo3       foo4
 
     for i in range(0, 3):
-    for g in range(1, 4):
-        if i+1==g:
-            a = f'''r{g} = {list(df.iloc[i])}{b}'''            # var 'b' stands for &lt;br&gt; See 'Other Functions'
-            writeHTML(a)
-            # or if you want it on a paragraph
-            a = tTags(True)
-            a.start_p(a)
+        for g in range(1, 4):
+            if i+1==g:
+                a = f'r{g} = {list(df.iloc[i])}{br}'       # var 'br' stands for &lt;br&gt; See 'Other Functions'
+            
+                writeWA(a)
 
-            Output:
-            # r1 = ['word', 'word1', 'word2', 'word3']
-            # r2 = ['test1', 'test2', 'test3', 'test4']
-            # r3 = ['foo1', 'foo2', 'foo3', 'foo4']
+                # or if you want it on a paragraph
+
+                p(a)
+
+
+
+        # Output on the web application:
+        # r1 = ['word', 'word1', 'word2', 'word3']
+        # r2 = ['test1', 'test2', 'test3', 'test4']
+        # r3 = ['foo1', 'foo2', 'foo3', 'foo4']
+        
+        
+</pre>
+  </div>
+  <div class="img-map">
+   <p>
+    Say you want to create an image map, with which you can perform different actions by clicking on 
+    shape and subsequently coordinate-secified parts of the shape on the image.
+    <br/>
+    See
+    <a href="https://www.w3schools.com/html/html_images_imagemap.asp" target="blank">
+     image map
+    </a>
+    . 
+    You can use f-strings and
+    <code>
+     for loop
+    </code>
+    to make it easy:
+   </p>
+   <pre>
+
+    with image(src='workplace.jpg', attr="usemap='#workmap'") as i:
+        i.show()
+
+    with open_tag('map', attr='name="workmap"'):
+        shape = ['rect', 'rect', 'circle']
+        coords = ["34,44,270,350", "290,172,333,250", "337,300,44"]
+        alt = ['Computer', 'Phone', 'Coffee']
+        href = ['computer.htm', 'phone.htm', 'coffee.htm']
+
+        for shape, coord, alt, href in zip(shapes, coords, alt, href):
+            with open_tag('area', attr=f'shape="{shape}" coord="{coord}" alt="{alt}" href="{href}"'):
+                pass
+
+    autoPrettify()
 
         
 </pre>
    <p>
-    The output is now displayed on the webpage! Of course, you can style it
-    the way you want depending on the tag you enclosed it in.
+    Here, you first display the image and give it an attribute
+    <code>
+     usemap
+    </code>
+    , then you enter in four lists 
+    that contain the attributes of the three areas to be covered, open the &lt;map&gt; tag and map it to the 
+    attribute
+    <code>
+     usemap
+    </code>
+    given to the image. Then you do a simple for loop and 
+    unpack each item in the lists with
+    <code>
+     zip()
+    </code>
+    , open the &lt;area&gt; tag and simply use 
+    f-strings to enter in four different attributes to three different &lt;area&gt; tags which all come under &lt;map&gt;! 
+    So instead of manually entering in every single tag and attribute, you've used Python's
+    <code>
+     list
+    </code>
+    and
+    <code>
+     for loop
+    </code>
+    to get the job done.
+   </p>
+   <p>
+    <br/>
+    <br/>
+    Similarly, use can use conditional statements and functions too
    </p>
   </div>
  </body>
