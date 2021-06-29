@@ -1,21 +1,7 @@
 
-.logo {
-    margin-top: 0px;
-    margin-bottom: False;
-    margin-left: 35%;
-    margin-right: False;
-    border: False;
-    display: False;
-    height: False;
-    width: False;
-    margin: False;
-    vertical-align: False;
-    opacity: False;
-    filter: False;
-}
 p {
-    color: black;
-    font-family: 'Roboto Mono', monospace;
+    color: False;
+    font-family: 'Ubuntu', sans-serif;;
     font-weight: False;
     text-align: False;
     font-size: False;
@@ -26,48 +12,25 @@ p {
     margin-left: False;
     margin-right: False;
     border: False;
-    display: block;
+    display: False;
     padding: False;
     height: False;
     width: False;
     line-break: False;
-    line-height: False;
+    line-height: 28px;
     overflow: False;
     margin: False;
     box-shadow: False;
 }
-header {
-    color: blue;
-    font-family: 'Prompt', sans-serif;
-    text-align: left;
-    font-size: 30px;
-    background-color: False;
-    padding: False;
-    height: False;
-    width: False;
-    line-break: False;
-    line-height: False;
-    border: False;
-    margin: False;
-}
-body {
-    background-color: white;
-    background-image: False;
-    opacity: 0.8;
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: False;
-    background-repeat: False;
-}
 pg_title {
-    color: black;
-    font-family: 'Prompt', sans-serif;
+    color: False;
+    font-family: 'Signika Negative', sans-serif;
     font-weight: False;
     text-align: False;
-    font-size: 20px;
+    font-size: 25px;
     background-color: False;
     background: False;
-    margin-top: 10px;
+    margin-top: 30px;
     margin-bottom: False;
     margin-left: False;
     margin-right: False;
@@ -83,6 +46,44 @@ pg_title {
     box-shadow: False;
 }
 pre {
-	font-size: 15px;
 	background-color: whitesmoke;
+	margin-left: 0.1%;
+}
+img {
+    margin-top: False;
+    margin-bottom: False;
+    margin-left: 35%;
+    margin-right: False;
+    border: False;
+    display: False;
+    height: False;
+    width: False;
+    margin: False;
+    vertical-align: False;
+    opacity: False;
+    filter: False;
+}
+h1 {
+    color: #1d37e0;
+    font-family: 'Titillium Web', sans-serif;
+    text-align: left;
+    font-size: False;
+    background-color: False;
+    padding: False;
+    height: False;
+    width: False;
+    line-break: False;
+    line-height: False;
+    border: False;
+    margin: False;
+}
+body {
+    background: False;
+    background-color: white;
+    background-image: False;
+    opacity: False;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: False;
+    background-repeat: False;
 }
