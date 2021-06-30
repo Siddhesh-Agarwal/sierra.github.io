@@ -503,9 +503,9 @@
    </p>
    <pre>
         
-    image(src:str, href="False", attr=None)
+    image(src:str, attr=None)
 
-    with image('sierra.jpg', "https://www.google.com", attr="alt='Sierra'") as i:
+    with image('sierra.jpg', attr="alt='Sierra' href='https://www.google.com'") as i:
         i.show()
         i.css(opacity=1.1, width='50px')
 
