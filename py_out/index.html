@@ -20,7 +20,7 @@
  <body>
   <div class="python_out">
    <pg_title>
-    Working with Python Outputs, Loops and Functions
+    Working with Python Loops, Functions, Variables and Conditions
    </pg_title>
    <p>
     Displaying Python outputs on your web applications are actually pretty simple with Sierra. 
@@ -137,9 +137,96 @@
     </code>
     to get the job done.
    </p>
+  </div>
+  <div class="funcs">
    <p>
-    Similarly, use can use conditional statements and functions too
+    With Sierra, using and displaying outputs of Python functions on your web application
+    is made easy as cake
    </p>
+   <p>
+    Here's an example of scraping a webpage with requests, given it's URL, and displaying 
+    all text within the &lt;p&gt; tag:
+   </p>
+   <pre>
+        
+    from sierra import *
+    import re
+    import urllib3
+
+    def ExtractpText(url):
+
+        http = urllib3.PoolManager()
+        req = http.request('GET', url)
+        respData = RemoveThrashText(str(req.data))
+        regex = '&lt;p&gt;(.*?)&lt;/p&gt;'
+        paragraphs = re.findall(regex, respData)
+        return paragraph
+
+    title('Extracting text from the &lt;p&gt; tag given a URL')
+    openBody()
+
+    writeWA("\n"ExtractpText("http://example.com/"))
+
+    autoPrettify()
+
+
+    # OR you could enclose it in a div/p/section/anything and style it, if you like
+
+
+    title('Extracting text from the &lt;p&gt; tag given a URL')
+
+        # Font
+    addFont("https://fonts.googleapis.com/css2?family=Roboto&amp;display=swap")
+
+    openBody(background_color="#161a21")
+
+    p(writeWA("\n"ExtractpText("http://example.com/")), attr="class='p_class'")
+
+        # CSS
+    with cTags('.p_class') as p_class:
+        p_class.css(color="#dfe3eb", font_family="'Roboto', sans-serif")
+
+    autoPrettify()
+
+        
+        
+</pre>
+   <p>
+    Simple as that! You just use
+    <code>
+     writeWA()
+    </code>
+    for getting the job done!
+    <br/>
+    Or you could just do
+    <code>
+     p(ExtractpText("http://example.com/"))
+    </code>
+    , both work
+   </p>
+   <p>
+    Similarly, variables and conditional statements can be added too
+   </p>
+   <pre>
+        
+    some_variable = 'doggo'
+
+    p(doggo)
+
+    # or use f-strings
+
+    p(f'This is my {some_variable}!')
+
+    # or use writeWA (even with f-strings, if the use case suits you)
+
+    if some_variable == 'dog':
+        writeWA(f'Grrr! This is NOT my {some_variable}')
+    else:
+        writeWA(f'Grrr! This is MY {some_variable}! I'd like you to come just a little closer.')
+
+        
+        
+</pre>
   </div>
  </body>
 </html>
