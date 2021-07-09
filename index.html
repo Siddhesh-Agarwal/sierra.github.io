@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-    <link href="home.css" rel="stylesheet"/>
     <title>Sierra</title>
 </head>
 <body>
@@ -23,6 +22,7 @@
             </nav>
         </div>
     </header>
+
     <section class="text-gray-600 body-font relative">
         <div class="container px-5 py-24 mx-auto">
             <div class="flex flex-col text-center w-full mb-12">
@@ -37,6 +37,29 @@
             <p class="font-bold">Sierra is a library for building web applications in HTML and CSS purely in Python, which lets to take advantage of its powerful functionalities.</p> 
             It can also be used as a micro templating library that makes skeletal integration with web frameworks faster.
             You can now develop your web application purely in Python, taking full advantage of it's powerful functionalities.
+
+            <!--Installation Section-->
+            <div class="flex flex-col text-left w-full">
+                <h2 class="sm:text-4xl text-3xl font-medium title-font mb-3 text-gray-900">Installation</h2>
+            </div>
+            To download the library:
+            <div class="bg-gray-100 text-gray-700 border-l-0 border-gray-500 p-4 mb-2">pip install sierra</div>
+
+            <!--Upgrade Section-->
+            <div class="flex flex-col text-left w-full">
+                <h2 class="sm:text-4xl text-3xl font-medium title-font mb-3 text-gray-900">Upgrade</h2>
+            </div>
+            <div class="bg-gray-100 text-gray-700 border-l-0 border-gray-500 p-4 mb-2">pip install --upgrade sierra</div>
+
+            <!--Documentation Section-->
+            <div class="flex flex-col text-left w-full">
+                <h2 class="sm:text-4xl text-3xl font-medium title-font mb-3 text-gray-900">Documentation</h2>
+            </div>
+            <ul>
+                <li>Check out the <a href="Documentation.html" target="_blank" class="font-bold">documentation</a> of Sierra</li>
+                <li>Check out a <a href="https://github.com/BrainStormYourWayIn/sierra_doc/blob/main/doc.py" target="_blank" class="font-bold">comprehensive example</a> of its use</li>
+            </ul>
+            <div class="bg-gray-100 text-gray-700 border-l-8 border-gray-500 p-4 mb-2">The example mentioned above is the documentation of Sierra, which was written with Sierra - standalone.</div>
 
             <!--Example Section-->
             <div class="flex flex-col text-left w-full">
@@ -56,42 +79,17 @@
                 <p>This is a relatively new project, so we're developing at a fast pace. If you have any suggestions or issue or just want to open a discussion, feel free to do so!</p>
             </div>
 
-            <!--Documentation Section-->
+            <!--Contact Us Section-->
             <div class="flex flex-col text-left w-full">
-                <h2 class="sm:text-4xl text-3xl font-medium title-font mb-3 text-gray-900">Documentation</h2>
+                <h2 class="sm:text-4xl text-3xl font-medium title-font mb-3 text-gray-900">Contact Us</h2>
             </div>
-            <ul>
-                <li>Check out the <a href="Documentation.html" target="_blank" class="font-bold">documentation</a> of Sierra</li>
-                <li>Check out a <a href="https://github.com/BrainStormYourWayIn/sierra_doc/blob/main/doc.py" target="_blank" class="font-bold">comprehensive example</a> of its use</li>
-            </ul>
-            <div class="bg-gray-100 text-gray-700 border-l-8 border-gray-500 p-4 mb-2">
-                <p>The example mentioned above is the documentation of Sierra, which was written with Sierra - standalone.</p>
-            </div>
-            
-            <!--Example Section-->
-            <div class="flex flex-col text-left w-full">
-                <h2 class="sm:text-4xl text-3xl font-medium title-font mb-3 text-gray-900">Example</h2>
-            </div>
-            Using this with Flask makes life easier if you're developing web applications with just HTML and CSS. Adding JS is not supported by Sierra and has to be done manually (if desired).
-
-            Here's a little advance-use example for this:
-
-            <!--Installation Section-->
-            <div class="flex flex-col text-left w-full">
-                <h2 class="sm:text-4xl text-3xl font-medium title-font mb-3 text-gray-900">Installation</h2>
-            </div>
-
-            <!--Upgrade Section-->
-            <div class="flex flex-col text-left w-full">
-                <h2 class="sm:text-4xl text-3xl font-medium title-font mb-3 text-gray-900">Upgrade</h2>
-            </div>
-
-            <!--License Section-->
-            <div class="flex flex-col text-left w-full">
-                <h2 class="sm:text-4xl text-3xl font-medium title-font mb-3 text-gray-900">License</h2>
-            </div>
+            <address>
+                Write to us at: <a href="mailto:brainstormyourwayin@gmail.com">brainstormyourwayin@gmail.com</a>
+            </address>
         </div>
     </section>
+
+    <!--Footer-->
     <footer class="text-gray-600 body-font">
         <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
             <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
@@ -102,9 +100,7 @@
             </p>
             <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
                 <a class="ml-4 text-gray-500" href="http://github.com/BrainStormYourWayIn/sierra" target="_blank">
-                    <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                        <path stroke="none" d="M 12 0.5 C 5.37 0.5 0 5.78 0 12.292 c 0 5.211 3.438 9.63 8.205 11.188 c 0.6 0.111 0.82 -0.254 0.82 -0.567 c 0 -0.28 -0.01 -1.022 -0.015 -2.005 c -3.338 0.711 -4.042 -1.582 -4.042 -1.582 c -0.546 -1.361 -1.335 -1.725 -1.335 -1.725 c -1.087 -0.731 0.084 -0.716 0.084 -0.716 c 1.205 0.082 1.838 1.215 1.838 1.215 c 1.07 1.803 2.809 1.282 3.495 0.981 c 0.108 -0.763 0.417 -1.282 0.76 -1.577 c -2.665 -0.295 -5.466 -1.309 -5.466 -5.827 c 0 -1.287 0.465 -2.339 1.235 -3.164 c -0.135 -0.298 -0.54 -1.497 0.105 -3.121 c 0 0 1.005 -0.316 3.3 1.209 c 0.96 -0.262 1.98 -0.392 3 -0.398 c 1.02 0.006 2.04 0.136 3 0.398 c 2.28 -1.525 3.285 -1.209 3.285 -1.209 c 0.645 1.624 0.24 2.823 0.12 3.121 c 0.765 0.825 1.23 1.877 1.23 3.164 c 0 4.53 -2.805 5.527 -5.475 5.817 c 0.42 0.354 0.81 1.077 0.81 2.182 c 0 1.578 -0.015 2.846 -0.015 3.229 c 0 0.309 0.21 0.678 0.825 0.56 C 20.565 21.917 24 17.495 24 12.292 C 24 5.78 18.627 0.5 12 0.5 Z"></path>
-                    </svg>
+                    <img src="https://github.githubassets.com/images/modules/site/icons/footer/github-mark.svg" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
                 </a>
                 <a class="ml-4 text-gray-500" href="http://gitlab.com/BrainStormYourWayIn/sierra" target="_blank">
                     <img src="https://docs.gitlab.com/assets/images/gitlab-logo.svg" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
