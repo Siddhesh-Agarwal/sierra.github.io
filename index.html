@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-    <!--link href="style.css" rel="stylesheet"/-->
-    <title>Sierra Framework</title>
+    <link href="home.css" rel="stylesheet"/>
+    <title>Sierra</title>
 </head>
 <body>
     <div className="flex h-screen justify-center items-center">
@@ -30,37 +30,63 @@
                 <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Sierra is a micro-templating engine for web frameworks in Python.</p>
             </div>
 
-            <!--About section-->
+            <!--About Section-->
             <div class="flex flex-col text-left w-full">
                 <h2 class="sm:text-4xl text-3xl font-medium title-font mb-3 text-gray-900">About</h2>
             </div>
-            Sierra is a Python micro templating engine for web frameworks that makes integration faster. You can now develop your web applications 
-            purely in Python, taking advantage of its powerful functionalities with short and simple enough syntax. It can also be used standalone. 
-            You can use Python loops, functions, variables, conditions - anything really you can do on Python, with Sierra. 
-            Harness the power of Python for you web applications now!
+            <p class="font-bold">Sierra is a library for building web applications in HTML and CSS purely in Python, which lets to take advantage of its powerful functionalities.</p> 
+            It can also be used as a micro templating library that makes skeletal integration with web frameworks faster.
+            You can now develop your web application purely in Python, taking full advantage of it's powerful functionalities.
 
-            <!--Example section-->
+            <!--Example Section-->
             <div class="flex flex-col text-left w-full">
                 <h2 class="sm:text-4xl text-3xl font-medium title-font mb-3 text-gray-900">Example</h2>
             </div>
             Using this with Flask makes life easier if you're developing web applications with just HTML and CSS.
-            <br>
             <div class="bg-red-100 text-red-500 border-l-8 border-red-500 p-4 mb-2">
                 <p class="font-bold">JS not supported</p>
                 <p>Adding JS is not yet supported by Sierra and has to be done manually (if desired).</p>
             </div>
+            It can also be used standalone in developing web applications. You can also use this as an alternative to jinja or Django or another templating engine, or use it along with one.
+            It's got features like displaying a table on the web application by loading in a .csv file, adding a bulleted list (ol/ul) by just passing in a Python list, automatic support for 
+            CSS styling arguments and more! You can use for loops, variables, functions - you name it, you have it, with Sierra. Improvement in the overall look of the code and intelligent 
+            handling of tags with <code>autoPrettify()</code>, a feature like no other. Harness the power of Python for your web applications!
+            <div class="bg-gray-100 text-gray-700 border-l-8 border-gray-500 p-4 mb-2">
+                <p class="font-bold">Note for users</p>
+                <p>This is a relatively new project, so we're developing at a fast pace. If you have any suggestions or issue or just want to open a discussion, feel free to do so!</p>
+            </div>
 
-            <!--Installation section-->
+            <!--Documentation Section-->
+            <div class="flex flex-col text-left w-full">
+                <h2 class="sm:text-4xl text-3xl font-medium title-font mb-3 text-gray-900">Documentation</h2>
+            </div>
+            <ul>
+                <li>Check out the <a href="Documentation.html" target="_blank" class="font-bold">documentation</a> of Sierra</li>
+                <li>Check out a <a href="https://github.com/BrainStormYourWayIn/sierra_doc/blob/main/doc.py" target="_blank" class="font-bold">comprehensive example</a> of its use</li>
+            </ul>
+            <div class="bg-gray-100 text-gray-700 border-l-8 border-gray-500 p-4 mb-2">
+                <p>The example mentioned above is the documentation of Sierra, which was written with Sierra - standalone.</p>
+            </div>
+            
+            <!--Example Section-->
+            <div class="flex flex-col text-left w-full">
+                <h2 class="sm:text-4xl text-3xl font-medium title-font mb-3 text-gray-900">Example</h2>
+            </div>
+            Using this with Flask makes life easier if you're developing web applications with just HTML and CSS. Adding JS is not supported by Sierra and has to be done manually (if desired).
+
+            Here's a little advance-use example for this:
+
+            <!--Installation Section-->
             <div class="flex flex-col text-left w-full">
                 <h2 class="sm:text-4xl text-3xl font-medium title-font mb-3 text-gray-900">Installation</h2>
             </div>
 
-            <!--Upgrade section-->
+            <!--Upgrade Section-->
             <div class="flex flex-col text-left w-full">
                 <h2 class="sm:text-4xl text-3xl font-medium title-font mb-3 text-gray-900">Upgrade</h2>
             </div>
 
-            <!--License section-->
+            <!--License Section-->
             <div class="flex flex-col text-left w-full">
                 <h2 class="sm:text-4xl text-3xl font-medium title-font mb-3 text-gray-900">License</h2>
             </div>
