@@ -2,49 +2,17 @@
 p {
     color: black;
     font-family: 'Ubuntu', sans-serif;;
-    font-weight: False;
-    text-align: False;
-    font-size: False;
-    background-color: False;
-    background: False;
-    margin-top: False;
-    margin-bottom: False;
-    margin-left: False;
-    margin-right: False;
-    border: False;
-    display: False;
-    padding: False;
-    height: False;
-    width: False;
-    line-break: False;
     line-height: 28px;
-    overflow: False;
-    margin: False;
-    box-shadow: False;
 }
+
 pg_title {
     color: black;
     font-family: 'Signika Negative', sans-serif;
-    font-weight: False;
-    text-align: False;
     font-size: 25px;
-    background-color: False;
-    background: False;
     margin-top: 30px;
-    margin-bottom: False;
-    margin-left: False;
-    margin-right: False;
-    border: False;
     display: block;
-    padding: False;
-    height: False;
-    width: False;
-    line-break: False;
-    line-height: False;
-    overflow: False;
-    margin: False;
-    box-shadow: False;
 }
+
 pre {
 	background-color: whitesmoke;
 	margin-left: 0.1%;
@@ -53,71 +21,37 @@ license {
 	font-family: 'Oswald', sans-serif;
 	font-size: 30px;
 }
+
 #pagelinks {
 	font-family: 'Josefin Sans', sans-serif;
 	opacity: 0.8;
 }
+
 img {
-    margin-top: False;
-    margin-bottom: False;
     margin-left: 35%;
-    margin-right: False;
-    border: False;
-    display: False;
-    height: False;
-    width: False;
-    margin: False;
-    vertical-align: False;
-    opacity: False;
-    filter: False;
 }
+
 h1 {
     color: #1d37e0;
     font-family: 'Titillium Web', sans-serif;
     text-align: left;
-    font-size: False;
-    background-color: False;
-    padding: False;
-    height: False;
-    width: False;
-    line-break: False;
-    line-height: False;
-    border: False;
-    margin: False;
 }
+
 body {
-    background: False;
     background-color: white;
-    background-image: False;
-    opacity: False;
     background-size: cover;
     background-attachment: fixed;
-    background-position: False;
-    background-repeat: False;
 }
+
 #table_id, th, td {
     color: black;
     font-family: Arial, Helvetica, sans-serif;
-    font-weight: False;
-    text-align: False;
-    font-size: False;
-    background-color: False;
-    background: False;
-    margin-top: False;
-    margin-bottom: False;
-    margin-left: False;
-    margin-right: False;
     border: 1px solid #d1d5e8;
-    display: False;
     padding: 8px;
     height: False;
     width: 20%;
-    line-break: False;
-    line-height: False;
-    overflow: False;
-    margin: False;
-    box-shadow: False;
 }
+
 #d_list {
 	margin-left: 40px;
 }
