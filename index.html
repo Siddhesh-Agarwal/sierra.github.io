@@ -814,7 +814,10 @@
     # This is used to write the web application into templates/ and static/ (for CSS)
     # after running pre-defined functions (see the GitHub README) inside of app.route()
 
-    def pre_defined_func():
+    def the template():
+        title('test', templating=True)          # Set templating to True if Sierra is being used to template with Flask
+
+    def test_func():
 
         the_template()
         with div(div_class='someClass') as d:
@@ -825,8 +828,8 @@
         autoPrettify()    
 
     @app.route("/some_route")
-    def something():
-        pre_defined_func()
+    def show_test_func():
+        test_func()
         return render_template('main1.html')
 
     # See the GitHub README for more information on this
