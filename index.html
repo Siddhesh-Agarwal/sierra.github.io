@@ -6,7 +6,7 @@
   <meta name="keywords" content="html,css,jinja,django,flask,python,web framework,templating">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>
-   Documentation | Sierra - 2.0.0
+   Documentation | Sierra - 2.2.0
   </title>
   <link href="style.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&amp;display=swap" rel="stylesheet"/>
@@ -19,7 +19,7 @@
    <img alt="Sierra" src="white_sierra.JPG"/>
   </a>
   <h1>
-   Documentation - Sierra v2.0.0
+   Documentation - Sierra v2.2.0
   </h1>
  </head>
  <body>
@@ -100,7 +100,7 @@
    <br/>
    <li>
     <a href="#other_funcs">
-     Other functions (add Bootstrap, script, escaping and more)
+     Other functions (add Bootstrap, templating, escaping and more)
     </a>
    </li>
    
@@ -113,7 +113,7 @@
     pip install sierra
    </code>
    <p>
-    can be done as an easier way of installing.
+    can be done as an easier way of installing. You can also clone the repository and work inside of <code>src/sierra</code> if you like.
     <br/>
     <br/>
     To import the library, simply use
@@ -126,97 +126,77 @@
    </p>
    <pre>
         
-    title(Title, icon=False)
+    title(Title, icon=False, templating=False)
 
     # Args:
-    # Title(str, compulsory)   : Title of the HTML file.
-    # icon(str, optional)      : Icon to be displayed. Should be a .ico file. Defaults to no icon.
+    # Title (str, compulsory)   : Title of the HTML file
+    # icon (str, optional)      : Icon to be displayed. Should be a .ico file. Defaults to no icon.
+    # templating (str, optional): Set to True if you want to work with Flask
 
 
 </pre>
    <p>
-    This creates an <code>index.html</code> and a <code>style.css</code> in the working directory
+    This creates an <code>index.html</code> and a <code>style.css</code> in the working directory. 
+    Make sure to have a <code>templates/</code> and a <code>static/</code> folder in the working directory, and work with 
+    Sierra outside of those folders if you want to work this with Flask. 
+    <br/>
+    See the <a href="https://github.com/BrainStormYourWayIn/sierra/blob/main/README.md">README</a> for more info on using it with Flask.
+    <br/>
+    Make sure the structure of your working directory is like this if you're using Sierra with Flask:
    </p>
+
+<pre>
+
+        ├──some_parent_folder
+
+            ├── sierra.py (for functions)
+            ├── templates/
+                ├──
+            ├── static/
+                ├──
+            ├── app.py (import functions from sierra.py and then route/render/anything)
+
+</pre>
+
    <p>
     You can add a header with
     <code>
      head()
     </code>
-    . Of the arguments, either
-    <code>
-     type
-    </code>
-    or
-    <code>
-     font_size
-    </code>
-    must be entered. Using both results in preference to
-    <code>
-     arg font_size
-    </code>
-    by CSS by default.
+    . Add CSS with <code>**kwargs</code>
     <br/>
     Start the body of the web application with
     <code>
      openBody()
     </code>
+    . Add CSS with <code>**kwargs</code>
    </p>
    <pre>
 
-    head(Head, 
-    type='header', font_size=False, font_family="Arial", color='black', text_align='left', background_color=False, 
-    padding=False, height=False, width=False, line_break=False, line_height=False, border=False, margin=False)
+    head(Head, type='header', **kwargs)
     
-    # head('Sierra', type='h1', color='#4287f5')
+    # head('Sierra', type='h1', color='#4287f5', font_family='Times New Roman')
 
-    # Head (str, compulsory)           : Caption header.
-    # type (str, optional)             : Header Size. Anything from h1 to h6. Leave blank, if not valid. Defaults to 'header'.
-    # color (str, optional)            : CSS Color (in any color code or name). Defaults to 'black'.
-    # font_family (str, optional)      : CSS font-family. Defaults to Arial.
-    # text_align (str, optional)       : CSS text-align parameter. left|right|center|justify|initial|inherit. Defaults to 'left'.
-    # font_size (str, optional)        : CSS font-size parameter (in any valid measure). Leave blank, if not valid.
-    # background_color (str, optional) : CSS background-color parameter. Defaults to 'white'.
-    # padding (str, optional)          : CSS padding parameter. Defaults to False.
-    # height (str, optional)           : CSS Height parameter. Defaults to False.
-    # width (str, optional)            : CSS Width parameter. Defaults to False.
-    # line_break (str, optional)       : CSS Line-break parameter. Defaults to False.
-    # line_height (str, optional)      : CSS line-height parameter. Defaults to False. 
-    # border (str, optional)           : CSS border parameter. Defaults to False.
-    # margin (str, optional)           : CSS margin parameter. Defaults to False.
+    # Args:
+        # Head (str, compulsory)           : Caption header.
+        # type (str, optional)             : Header type. Anything from 'h1' to 'h6'
+        # **kwargs (optional)              : CSS styling arguments
 
 
-    openBody(
-    background='False', background_color='white', background_image=False, opacity=False, background_size='cover', 
-    background_attachment='fixed', background_position=False, background_repeat=False)
+    openBody(**kwargs)
 
-    # openBody()
+    # openBody(background_color='blue', opacity=1.8)
 
         
 </pre>
    <p>
-    You may notice styling is a bit complicated with
-    <code>
-     head()
-    </code>
-    and
-    <code>
-     openBody()
-    </code>
-    , 
-    but this method only applies to these tags. Styling gets much easier, especially with
-    <code>
-     .css()
-    </code>
-    and
-    <code>
-     writeCSS()
-    </code>
-    or
-    <code>
-     writeCSS_raw()
-    </code>
-    for custom styling arguments.
+    You may notice in styling with <code>**kwargs</code>, that the styling argument 
+    <code>font-family</code> and <code>background-color</code> is entered in as 
+    <code>font_family</code> and <code>background_color</code>. 
+    That is, underscores are used in <code>**kwargs</code> in the place of hyphens. 
+    This is because Python returns a <code>SyntaxError</code> when hyphens are used in the <code>key</code> of <code>**kwargs</code>.
     <br/>
+    Hence, use underscores in <code>**kwargs</code> for hyphens in styling arguments.
    </p>
    <p>
     Fonts can be added with
@@ -248,12 +228,13 @@
    <p>
     Tags can be opened with
     <code>
-     open_tag('tag_name')
+     open_tag(name_of_tag)
     </code>
     , and CSS can be added with
     <code>
      .css()
     </code>
+    , which is the same mechanism that <code>head()</code> and <code>openBody()</code> contain. 
     Any code within that tag can be entered with a context manager approach under
     <code>
      with
@@ -312,15 +293,13 @@
      .css()
     </code>
     , which 
-    takes in pre-defined styling arguments that are the most used ones, and can only be used within the context 
-    manager of an open tag
+    takes in <code>**kwargs</code>, and can only be used within the context 
+    manager of <code>open_tag()</code>. Underscores are used in the <code>key</code> or <code>**kwargs</code> 
+    instead of hyphens in styling attributes.
    </p>
    <pre>
         
-    .css( 
-        color='black', font_family='Arial', font_weight=False, text_align=False, font_size=False, 
-        background_color=False, background=False, margin_top=False, margin_bottom=False, margin_left=False, margin_right=False, 
-        border=False, display=False, padding=False, height=False, width=False, line_break=False, line_height=False, overflow=False, margin=False, box_shadow=False)
+    .css(**kwargs)
         
         
 </pre>
@@ -344,12 +323,10 @@
    </p>
    <pre>
         
-    with cTags(tag_name) as anything:
+    with cTags('tag_name') as anything:
         anything.css()
 
-    The pre-defined .css() arguments are the same as the arguments under the .css() which is bound to a specific 
-    place in the document, except that color defaults to False instead of 'black' (To provide for image CSS in case an atribute like
-    a class or an id is used)
+    The .css() takes in <code>**kwargs</code>. Use underscores instead of hyphens in styling attributes
         
         
 </pre>
@@ -417,35 +394,26 @@
     </code>
     respectively, and the first arguments are their classes.
     CSS and tag attributes can be added the same way as any other tag, except that the first argument must 
-    exist to add CSS. Or if you want to add CSS to the
+    exist to add CSS. Or if you want to add CSS to any other attribute like the
     <code>
      id
     </code>
-    attribute, use one of the four options 
+    attribute, use one of the three other options 
     for CSS specified before, simply use
     <code>
      '#name_of_id'
     </code>
-    as the tag name. The same applies to if 
-    you want to use custom CSS attributes to the
-    <code>
-     class
-    </code>
-    attribute, use
-    <code>
-     '.class_name'
-    </code>
-    as the name of the tag
    </p>
    <pre>
         
     div(div_class=None, attr=None)
     section(sec_class=None, attr=None)
 
-    # with div(div_class='newClass') as d:
+    # with div(div_class='newClass', attr=None) as d:
     #     d.css(background_color="#e0e330")
+
     #     with section(None, attr="id='some_id'"):
-    #         p("This is a paragraph inside a section which is inside a div")
+    #         p("This is a paragraph inside a section which has attribute id=some_id, and is inside a div")
 
     # with cTags('#some_id') as styling_section_tag_with_id:
     #     styling_section_tag_with_id.css(margin_top='20px')
@@ -475,7 +443,8 @@
      p()
     </code>
     is not a context manager based approach, as shown above under the section tag, and 
-    closes upon argument exit
+    closes upon argument exit. Use <code>cTags()</code>, <code>writeCSS()</code> or <code>writeCSS_raw()</code> 
+    to add CSS.
    </p>
    <pre>
         
@@ -512,21 +481,6 @@
     with image('sierra.jpg', attr="alt='Sierra' href='https://www.google.com'") as i:
         i.show()
         i.css(opacity=1.1, width='50px')
-
-
-
-    # margin_top (str, optional)       : CSS image margin-top parameter. Defaults to 'False'.
-    # margin_bottom (str, optional)    : CSS image margin-bottom parameter. Defaults to 'False'.
-    # margin_left (str, optional)      : CSS image margin-left parameter. Defaults to 'False'.
-    # margin_right (str, optional)     : CSS image margin-right parameter. Defaults to 'False'.
-    # border (str, optional)           : CSS image border parameter. Defaults to 'False'.
-    # display (str, optional)          : CSS image display parameter. Defaults to 'block'.
-    # height (str, optional)           : CSS image height parameter. Defaults to False.
-    # width (str, optional)            : CSS image width parameter. Defaults to False.
-    # margin (str, optional)           : CSS image margin parameter. Defaults to False.
-    # vertical-align (str, optional)   : CSS image vertical-align parameter. Defaults to False.
-    # opacity (int/float, optional)    : CSS image opacity parameter. Defaults to False.
-    # filter (str, optional)           : CSS image filter parameter. Defaults to False.
         
         
 </pre>
@@ -573,9 +527,7 @@
 
     # CSS styling arguments for getTable() and startTable()
 
-    .css(border=False, width=False, height=False, border_collapse=False, color='black',
-    font_family="Arial", font_weight=False, text_align=False, font_size=False, margin=False,
-    background_color='white')
+    .css(**kwargs)
         
         
 </pre>
@@ -682,7 +634,7 @@
     <code>
      .css()
     </code>
-    function - use one of the four methods 
+    function - use one of <code>cTags()</code>, <code>writeCSS()</code>, <code>writeCSS_raw()</code> 
     to add CSS to it
    </p>
    <pre>
@@ -750,10 +702,10 @@
    </p>
    <pre>
 
-    writeCSS('#d_list', {"margin-left":"40px"})
-
     a = [[['foo'], ['foo1', 'foo2']], [['py', 'py1'], ['PEP', 'PEP8']]]
     des_lists(a, "id='d_list'")
+
+    writeCSS('#d_list', {"margin-left":"40px"})
 
 
     Outputs:
@@ -835,43 +787,62 @@
 
     # Or say you want to add some Bootstrap to your page:
 
-    title()
-    # Some CSS stuff for the HTML
+    ###
 
+    title()
+
+    # Some CSS stuff for the HTML
     # Content starts from here
 
-    #  addFont('Any font link(s)')
+    addFont('Any font link(s)')
+
     #  Bootstrap link tags: 
-    #  writeWA("\n"r'&lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"&gt;')
-    #  writeWA("\n"r'&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"&gt;')
-    #  writeWA("\n"r'&lt;script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"&gt;')
+
+    writeWA("\n"r'&lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"&gt;')
+    writeWA("\n"r'&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"&gt;')
+    writeWA("\n"r'&lt;script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"&gt;')
     
 
     Regular HTML escape sequences and glyphs and regular tags like &lt;a&gt; can be used within the context manager
     or any functions that involve displaying on the web application, like
 
-    p('HTML &lt;a href="some_link&gt;tag&lt;a/&gt; within a paragraph"')
+    p('HTML &lt;a href="some_link"&gt;tag&lt;a/&gt; within a paragraph &lt;br&gt; This sentence comes after a break')
+
+
+    write_to_template(filename)
+
+    # This is used to write the web application into templates/ and static/ (for CSS)
+    # after running pre-defined functions (see the GitHub README) inside of app.route()
+
+    def pre_defined_func():
+
+        the_template()
+        with div(div_class='someClass') as d:
+            p('Some paragraph within a div')
+            d.css(background_color="#1a1b1c", border="5px outset red", text_align="center", color="rgb(237, 241, 245)")
+
+        write_to_template('main1.html')
+        autoPrettify()    
+
+    @app.route("/some_route")
+    def something():
+        pre_defined_func()
+        return render_template('main1.html')
+
+    # See the GitHub README for more information on this
 
 
     closeBody()
-    # Closes the &lt;body&gt; tag
+    # Closes the &lt;body&gt; tag. Use autoPrettify() at the end of all development, instead
 
     closeHTML()
-    # Closes the &lt;html&gt; tag
+    # Closes the &lt;html&gt; tag. Use autoPrettify() at the end of all development, instead
 
     autoPrettify()
     # It handles tags beautifully and improves overall look of the HTML code.
     # Use this at the end of all development outside all context managers. Using it inside or at a working 
     # stage will not work well
     # You can use this to avoid using closeHTML() and closeBody()
-
-
-    var br
-    # 'br' is a variable that stands for the HTML tag &lt;br&gt;. You can use this within f-strings 
-    # or any place else to break lines. Avoid using it to name another variable, since this will cause 
-    # conflict. If used, define another variable for breaking or just use &lt;br&gt; as a regular HTML tag. (See writeWA())
-
-
         
         
 </pre>
