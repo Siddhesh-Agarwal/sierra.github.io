@@ -15,7 +15,7 @@
     <title>Documentation | Sierra - 2.0.0</title>
 </head>
 <body>
-    <a href="https://github.com/BrainStormYourWayIn/sierra"><img alt="Sierra logo" src="https://github.com/Siddhesh-Agarwal/sierra.github.io/blob/main/sierra.jpg"/></a>
+    <a href="https://github.com/BrainStormYourWayIn/sierra"><img alt="Sierra logo" src="sierra.jpg"/></a>
     <h1>Documentation - Sierra v2.0.0</h1>
     <div id="first_up">
         <p>
@@ -45,13 +45,19 @@
     </ul>
     <p>Let's get started</p>
     <div id="starting_off">
-        <code>pip install sierra</code>
+        <pre>
+
+pip install sierra
+        </pre>
         <p>
             can be done as an easier way of installing. You can see the README on the GitHub page for the <code>pip install git+git</code> method.
             <br>
             To import the library, simply use
         </p>
-        <code>from sierra import *</code>
+        <pre>
+
+from sierra import *
+        </pre>
         <p>Once imported, the first line of syntax is mandatory, and all development to be displayed on the webpage must come after this:</p>
         <pre>
 
@@ -64,8 +70,7 @@ title(Title, icon=False)
         <p>
             This creates an <code>index.html</code> and a <code>style.css</code> in the working directory.
             <br>
-            You can add a header with <code>head()</code>. Of the arguments, either <code>type</code> or <code>font_size</code> must be entered. Using both 
-            results in preference to <code>arg font_size</code> by CSS by default.
+            You can add a header with <code>head()</code>. Of the arguments, either <code>type</code> or <code>font_size</code> must be entered. Using both results in preference to <code>arg font_size</code> by CSS by default.
             <br>
             Start the body of the web application with <code>openBody()</code>.
         </p>
@@ -114,8 +119,7 @@ addFont(font_link)
     <div id="tags">
         <pg_title>Using tags</pg_title>
         <p>
-            Tags can be opened with <code>open_tag('tag_name')</code>, and CSS can be added with <code>.css()</code>. Any code within that tag can be entered with 
-            a context manager approach under <code>with</code>.
+            Tags can be opened with <code>open_tag('tag_name')</code>, and CSS can be added with <code>.css()</code>. Any code within that tag can be entered with a context manager approach under <code>with</code>.
         </p>
         <pre>
             
@@ -125,7 +129,7 @@ with open_tag('tag_name', attr=None) as t:
     #  ---  Any content  ---  
         </pre>
         <p>
-            Coming out of <code>with</code> automatically closes the tag. <br>
+            Coming out of <code>with</code> automatically closes the tag. <br> 
             <code>attr=None</code>, which is the second argument in <code>open_tag()</code>, enables the user to add attributes to their HTML tag.
         </p>
         <pre>
@@ -142,17 +146,14 @@ with open_tag('tag_name', attr="class='someClass' id='some_id'") as t:
     <div id="css-ing">
         <pg_title>Using CSS</pg_title>
         <p>
-            There are four ways you can add CSS to tags. The first one is with <code>.css()</code>, which takes in pre-defined styling arguments that are 
-            the most used ones, and can only be used within the context manager of an open tag.
+            There are four ways you can add CSS to tags. The first one is with <code>.css()</code>, which takes in pre-defined styling arguments that are the most used ones, and can only be used within the context manager of an open tag.
         </p>
         <pre>
 
 .css(color='black', font_family='Arial', font_weight=False, text_align=False, font_size=False, background_color=False, background=False, margin_top=False, margin_bottom=False, margin_left=False, margin_right=False, border=False, display=False, padding=False, height=False, width=False, line_break=False, line_height=False, overflow=False, margin=False, box_shadow=False)   
         </pre>
         <p>
-            The second way is to use <code>cTags()</code>. It is also a context manager based approach, but there is more freedom, in the sense that any tag 
-            can be styled with this, and the context manager does not have to be within another <code>with</code> to be executed. You can use this anywhere, 
-            provided it comes after<code>title()</code>, which is a mandatory function.
+            The second way is to use <code>cTags()</code>. It is also a context manager based approach, but there is more freedom, in the sense that any tag can be styled with this, and the context manager does not have to be within another <code>with</code> to be executed. You can use this anywhere, provided it comes after<code>title()</code>, which is a mandatory function.
         </p>
         <pre>
 
@@ -162,8 +163,7 @@ with cTags(tag_name) as anything:
 # The pre-defined .css() arguments are the same as the arguments under the .css() which is bound to a specific place in the document, except that color defaults to False instead of 'black' (To provide for image CSS in case an attribute like a class or an id is used)
         </pre>
         <p>
-            The third way is to use <code>writeCSS()</code>. It takes in a dictionary of CSS attributes, and adds them to the tag mentioned as the first argument 
-            in <code>writeCSS().</code>.
+            The third way is to use <code>writeCSS()</code>. It takes in a dictionary of CSS attributes, and adds them to the tag mentioned as the first argument in <code>writeCSS().</code>.
         </p>
         <pre>
 
@@ -189,10 +189,7 @@ pre {
     <div id="tTags">
         <pg_title>Working with div, section and p tags</pg_title>
         <p>
-            Division and section tags can be opened the same way as <code>open_tag()</code>, except the syntax is<code>div()</code> and <code>section()</code> respectively, 
-            and the first arguments are their classes. CSS and tag attributes can be added the same way as any other tag, except that the first argument must exist to add CSS 
-            or if you want to add CSS to the <code>id</code> attribute, use one of the four options for CSS specified before, simply use <code>'#name_of_id'</code> as the tag 
-            name. The same applies to if you want to use custom CSS attributes to the<code>class</code> attribute, use <code>'.class_name'</code> as the name of the tag.
+            Division and section tags can be opened the same way as <code>open_tag()</code>, except the syntax is<code>div()</code> and <code>section()</code> respectively, and the first arguments are their classes. CSS and tag attributes can be added the same way as any other tag, except that the first argument must exist to add CSS or if you want to add CSS to the <code>id</code> attribute, use one of the four options for CSS specified before, simply use <code>'#name_of_id'</code> as the tag name. The same applies to if you want to use custom CSS attributes to the<code>class</code> attribute, use <code>'.class_name'</code> as the name of the tag.
         </p>
         <pre>
 
@@ -208,9 +205,7 @@ section(sec_class=None, attr=None)
 #    styling_section_tag_with_id.css(margin_top='20px')
         </pre>
         <p>
-            <code>p</code> tags can be added with <code>p()</code>. The text to be added goes into the <code>text</code> attribute, and 
-            tag attributes, as usual, can be added to <code>attr</code>. However, <code>p()</code> is not a context manager-based approach, 
-            as shown above under the section tag, and closes upon argument exit.
+            <code>p</code> tags can be added with <code>p()</code>. The text to be added goes into the <code>text</code> attribute, and tag attributes, as usual, can be added to <code>attr</code>. However, <code>p()</code> is not a context manager-based approach, as shown above under the section tag, and closes upon argument exit.
         </p>
         <pre>
 
@@ -222,8 +217,7 @@ p(text, attr=None)
     <div id=add_img>
         <pg_title>Adding images</pg_title>
         <p>
-            Images can be added with <code>image()</code> as context manager based approach, <code>.show()</code> which takes no arguments 
-            is used to display the image and <code>.css()</code> can be used to add CSS, or one of the other three methods.
+            Images can be added with <code>image()</code> as context manager based approach, <code>.show()</code> which takes no arguments is used to display the image and <code>.css()</code> can be used to add CSS, or one of the other three methods.
         </p>
         <pre>
 
@@ -435,7 +429,7 @@ var br
 # 'br' is a variable that stands for the HTML tag &lt;br&gt;. You can use this within f-strings  or any place else to break lines. Avoid using it to name another variable, since this will cause conflict. If used, define another variable for breaking or just use &lt;br&gt; as a regular HTML tag. (See writeWA())
         </pre>
     </div>
-
+    <hr>
     <pg_title>License</pg_title>
     <pre>    
 See <a href="https://github.com/BrainStormYourWayIn/sierra/blob/main/LICENSE">LICENSE</a>
