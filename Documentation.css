@@ -64,10 +64,11 @@ ul {
 
 code {
     font-family: "Cutive mono", monospace;
-    font-size: 18px;
+    color: #181616;
+    font-size: 16px;
     line-height: 24px;
     font-weight: 400;
-    background: whitesmoke;
+    background: #e5e6e8;
     opacity: 95%;
 }
 
