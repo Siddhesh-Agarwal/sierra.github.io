@@ -2,8 +2,8 @@
 <html lang="en">
  <meta charset="utf-8"/>
  <head>
-  <meta name="description" content="Sierra - A Python native engine for Web Development">
-  <meta name="keywords" content="html,css,jinja,django,flask,python,web framework,templating">
+  <meta name="description" content="Sierra is a Python library to write HTML and CSS in pure Python using the DOM API in a simple yet elegant manner">
+  <meta name="keywords" content="html,css,dom,jinja,django,flask,python,templating">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
@@ -21,7 +21,7 @@
 
 </script>
   <title>
-   Documentation | Sierra - 2.2.0
+   Documentation | Sierra - 2.4.0
   </title>
   <link href="style.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&amp;display=swap" rel="stylesheet"/>
@@ -34,26 +34,24 @@
    <img alt="Sierra" src="white_sierra.JPG"/>
   </a>
   <h1>
-   Documentation - Sierra v2.2.0
+   Documentation - Sierra v2.4.0
   </h1>
  </head>
  <body>
   <div id="first_up">
    <p>
     Wecome to the documentation of Sierra - 
-    Sierra is a Python native engine for frontend development, which makes templating for the backend faster, as well as have full control on your frontend. 
+    Sierra is a Python library to write HTML and CSS in pure Python using the DOM API in a simple yet elegant manner. Take advantage of Python's powerful 
+    functionalities with ease. Loops, variables, functions, libraries - you name it, you have it. 
     You can now develop your web application purely in Python, taking full advantage of its powerful functionalities with simple and elegant syntax. 
     You can use this along with another 
-    templating engine, or use it standalone - even without a web framework, if you like. This is recommended to use 
-    as an alternative to jinja or any other templating engine if you're developing web applications sans JS, since Sierra 
-    doesn't have support for JS and even for very advaced usage (as of yet). This is relatively new, so features are being added at a quick pace. 
+    templating engine, or use it standalone - even without a web framework, if you like.
     If you have any specific requests, open a discussion/issue on our
     <a href="https://github.com/BrainStormYourWayIn/sierra">
      GitHub page
     </a>
     . 
-    Any contributions can also be made there. Head over <a href="https://github.com/BrainStormYourWayIn/sierra_examples/" target='blank'>here</a> 
-    to have a look at a few examples of its use.
+    Any contributions can also be made there.
     <br/>
    </p>
    <p>
@@ -66,14 +64,8 @@
   </div>
   <ul id="pagelinks">
    <li>
-   <a href="https://brainstormyourwayin.github.io/sierra.github.io/py_out/index.html" target='blank'>
-     Working with Python Loops, Functions, Variables and Conditions
-    </a>
-   </li>
-   <br/>
-   <li>
     <a href="#tags">
-     Using tags
+     Opening tags, Creating custom functions for you own, and controlling their behavior
     </a>
    </li>
    <br/>
@@ -115,7 +107,7 @@
    <br/>
    <li>
     <a href="#other_funcs">
-     Other functions (add Bootstrap, templating, escaping and more)
+     Other functions
     </a>
    </li>
    
@@ -141,37 +133,17 @@
    </p>
    <pre>
         
-    title(Title, icon=False, templating=False)
+    title(Title, icon=False)
 
     # Args:
     # Title (str, compulsory)   : Title of the HTML file
     # icon (str, optional)      : Icon to be displayed. Should be a .ico file. Defaults to no icon.
-    # templating (str, optional): Set to True if you want to work with Flask
 
 
 </pre>
    <p>
     This creates an <code>index.html</code> and a <code>style.css</code> in the working directory. 
-    Make sure to have a <code>templates/</code> and a <code>static/</code> folder in the working directory, and work with 
-    Sierra outside of those folders if you want to work this with Flask. 
     <br/>
-    See the <a href="https://github.com/BrainStormYourWayIn/sierra/blob/main/README.md">README</a> for more info on using it with Flask.
-    <br/>
-    Make sure the structure of your working directory is like this if you're using Sierra with Flask:
-   </p>
-
-<pre>
-
-        ├──some_parent_folder
-
-            ├── sierra_funcs.py (for functions)
-            ├── templates/
-                ├──
-            ├── static/
-                ├──
-            ├── app.py (import functions from sierra.py and then route/render/anything)
-
-</pre>
 
    <p>
     You can add a header with
@@ -243,13 +215,13 @@
    <p>
     Tags can be opened with
     <code>
-     open_tag(name_of_tag)
+     Tag(name_of_tag, **kwargs)
     </code>
     , and CSS can be added with
     <code>
      .css()
     </code>
-    , which is the same mechanism that <code>head()</code> and <code>openBody()</code> contain. 
+    , which is the same mechanism that <code>head()</code> and <code>openBody()</code> contains, except that it is now used as a function under a class. 
     Any code within that tag can be entered with a context manager approach under
     <code>
      with
@@ -257,7 +229,7 @@
    </p>
    <pre>
     
-    with open_tag('tag_name', attr=None) as t:
+    with open_tag('tag_name') as t:
         t.css(font_color='rgb(11, 176, 89)')
 
         #  ---  Any content  ---  
@@ -272,18 +244,14 @@
     automatically closes the tag
     <br/>
     <code>
-     attr=None
+     **kwargs
     </code>
-    , which is the second argument in
-    <code>
-     open_tag()
-    </code>
-    , enables the user
+    , in Tag() enables the user
     to add attributes to their HTML tag.
    </p>
    <pre>
     
-    with open_tag('tag_name', attr="class='someClass' id='some_id'") as t:
+    with Tag('tag_name', __class='someClass' id='some_id') as t:
 
         t.css(font_color='rgb(11, 176, 89)')
 
@@ -297,78 +265,104 @@
    <code>
     &lt;tag_name class='someClass' id='some_id'&gt;
    </code>
+   <p>Prefix Python-conflicting arguments with a double underscore, and use a single underscore in the place of a hyphen.
+    Here, CSS is added to <code>tag_name</code>
+   </p>
+    <p>With v2.4.0, you can CREATE functions for any tag and even control their behavior! Here's how you create 'short' tags that mostly come under <code>&lt;head&gt;:
+     <pre>
+     
+     @tag
+     def meta(**kwargs):
+         pass
+         
+     meta(name="description", content="This is some description")
+     meta(name="viewport", content="width=device-width", initial_scale=1.0)
+     
+     # This is equivalent to
+     
+     <meta name="description" content="This is some description">
+     <meta name="viewport" content="width=device-width" initial-scale=1.0>
+     
+     # Using argument `text` makes the tag close after the opening of the tag
+     
+     @tag
+     def script(**kwargs):
+         pass
+         
+     script(__async="", src="some_src", text="")
+     
+     # <script async="" src="some_src"></script>
+     
+     # You can enter any text to appear within the tag. Not using `text` creates a tag similar to the &lt;meta&gt; tag
+     
+    </pre>
+   <p>
+    Notice how <code>__async</code> is prefixed with a double underscore. This is because it is a Python-conflicting argument. So is <code>class</code> and <code>for</code>. 
+    Simply prefix the conflicting argument with a double underscore as the <code>key</code> in <code>**kwargs</code>, and you're good. 
+    Also notice how the meta attribute <code>initial-scale</code> is entered in as <code>initial_scale</code>. Using hyphens in a <code>key</code> returns a <code>SyntaxError</code> 
+    in Python and hence, use underscores for hyphens. This applies when adding CSS too.
+   </p>
+     <p>
+      Pro tip: You can define a function <code>br()</code> with <code>@tag</code> that takes in no arguments to use instead of manually using <code><br/></code>
+     </p>
+    <p>
+    You can also create tags with a context-manager behavior for tags that take in more content!
+   </p>
+     <pre>
+     
+    @CmTag
+    def script(**kwargs):
+        pass
+        
+    with script():
+
+        writeWA('''
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA—XXXXXXXX-X');
+  ''')
+  
+     </pre>
+     <p><code>writeWA()</code> is used to add any text onto the HTML content.
   </div>
   <div id="css-ing">
    <pg_title>
     Using CSS
    </pg_title>
    <p>
-    There are four ways you can add CSS to tags. The first one is with
+    There are three ways you can add CSS to tags. The first one is with
     <code>
      .css()
     </code>
     , which 
     takes in <code>**kwargs</code>, and can only be used within the context 
-    manager of <code>open_tag()</code>. Underscores are used in the <code>key</code> or <code>**kwargs</code> 
+    managers of already existing syntax, like <code>Tag()</code> and <code>div()</code>. Underscores are used in the <code>key</code> or <code>**kwargs</code> 
     instead of hyphens in styling attributes.
    </p>
    <pre>
         
-    .css(**kwargs)
-        
+    .css(**kwargs)       
         
 </pre>
    <p>
     The second way is to use
     <code>
-     cTags()
-    </code>
-    . It is also a context manager based approach, but 
-    there is more freedom, in the sense that any tag can be styled with this, and the context manager 
-    does not have to be within another
-    <code>
-     with
-    </code>
-    to be executed. You can use this anywhere, provided 
-    it comes after
-    <code>
-     title()
-    </code>
-    , which is a mandatory function.
-   </p>
-   <pre>
-        
-    with cTags('tag_name') as anything:
-        anything.css()
-
-    The .css() takes in <code>**kwargs</code>. Use underscores instead of hyphens in styling attributes
-        
-        
-</pre>
-   <p>
-    The third way is to use
-    <code>
      writeCSS()
     </code>
-    . It takes in a dictionary of CSS attributes, and adds 
-    them to the tag mentioned as the first argument in
-    <code>
-     writeCSS().
-    </code>
+    . It takes in a dictionary of CSS arguments with <code>**kwargs</code>, and adds 
+    them to the tag mentioned as the first argument in it. Here there's more freedom in the sense, any tag can be styled with this.
    </p>
    <pre>
         
-    writeCSS(tag, *args)
+    writeCSS(tag, **kwargs)
 
-    # *args takes in a dictionary of styling attributes
-
-    # writeCSS('pre', {"background-color": "#edf7f7", "margin-left": "0.1%"})
-    # This adds the specified CSS attributes in the dictionary to the tag &lt;pre&gt;
-        
+    # writeCSS('.some_class', background_color="#edf7f7", margin_left="0.1%")
+    # Use underscores for hyphens
         
 </pre>
    <p>
-    The fourth way to do this, is to use
+    The third way to do this, is to use
     <code>
      writeCSS_raw()
     </code>
@@ -397,49 +391,44 @@
    <p>
     Division and section tags can be opened the same way as
     <code>
-     open_tag()
+     Tag()
     </code>
     , except the syntax is
     <code>
-     div()
+     div(**kwargs)
     </code>
     and
     <code>
-     section()
+     section(**kwargs)
     </code>
-    respectively, and the first arguments are their classes.
-    CSS and tag attributes can be added the same way as any other tag, except that the first argument must 
-    exist to add CSS. Or if you want to add CSS to any other attribute like the
-    <code>
-     id
-    </code>
-    attribute, use one of the three other options 
-    for CSS specified before, simply use
+    respectively. It can take in tag attributes through <code>**kwargs</code>. Prefix conflicting arguments with a double underscore and use a single underscore 
+    for hyphens. 
+    While adding CSS for this is similar to the mechanism in <code>Tag()</code>, it differs in the fact that the <code>.css()</code> here prioritizes tag 
+    attributes given. The first priority being for <code>__class</code>, the second being for <code>id</code>, and if both don't exist, CSS is just added to the 
+    tag raw. That is <code>div</code> or <code>section</code>. Entering in both <code>__class</code> and <code>id</code> results in CSS being added to the class, 
+    and enters it to <code>id</code> in the absence of <code>__class</code>. If you don't want to add CSS this way using <code>.css()</code>, use 
+    <code>writeCSS()</code> instead, where you can add CSS to any tag/attribute, simply use
     <code>
      '#name_of_id'
     </code>
+    or <code>'.name_of_class'</code> as the first argument.
    </p>
    <pre>
         
-    div(div_class=None, attr=None)
-    section(sec_class=None, attr=None)
+    div(**kwargs)
+    section(**kwargs)
 
-    # with div(div_class='newClass', attr=None) as d:
+    # with div(__class='div_class') as d:
     #     d.css(background_color="#e0e330")
+    #     with section(id='sec_id'):
+    #         p("This is a paragraph inside a section which has attribute id=sec_id, and is inside a div")
 
-    #     with section(None, attr="id='some_id'"):
-    #         p("This is a paragraph inside a section which has attribute id=some_id, and is inside a div")
-
-    # with cTags('#some_id') as styling_section_tag_with_id:
-    #     styling_section_tag_with_id.css(margin_top='20px')
+    # writeCSS('#sec_id', margin_top='30px')
         
         
 </pre>
    <p>
-    <code>
-     p
-    </code>
-    tags can be added with
+    Paragraph tags can be added with
     <code>
      p()
     </code>
@@ -450,7 +439,7 @@
     </code>
     attribute, and tag attributes, as usual, can be added to
     <code>
-     attr
+     **kwargs
     </code>
     . 
     However,
@@ -458,14 +447,14 @@
      p()
     </code>
     is not a context manager based approach, as shown above under the section tag, and 
-    closes upon argument exit. Use <code>cTags()</code>, <code>writeCSS()</code> or <code>writeCSS_raw()</code> 
+    closes upon argument exit. Use <code>writeCSS()</code> or <code>writeCSS_raw()</code> 
     to add CSS.
    </p>
    <pre>
         
-    p(text, attr=None)
+    p(text, **kwargs)
 
-    # p('This is some text that goes inside a paragraph. Atrributes can be added to attr', attr="class='someClass'")
+    # p('This is some text that goes inside a paragraph. Atrributes can be added to attr', __class='someClass')
         
         
 </pre>
@@ -487,13 +476,13 @@
     <code>
      .css()
     </code>
-    can be used to add CSS, or one of the other three methods
+    can be used to add CSS (no priorities, just adds to <code>img</code>), or one of the other three methods to add it to a class or an id.
    </p>
    <pre>
         
-    image(src:str, attr=None)
+    image(src:str, **kwargs)
 
-    with image('sierra.jpg', attr="alt='Sierra' href='https://www.google.com'") as i:
+    with image('sierra.jpg', alt='Sierra', href='https://www.google.com', target='_blank') as i:
         i.show()
         i.css(opacity=1.1, width='50px')
         
@@ -507,16 +496,16 @@
    <p>
     Adding a table could never have been easier with a context manager approach on
     <code>
-     startTable()
+     Table()
     </code>
     , which takes no arguments and 
     has objects
     <code>
-     createTable()
+     create_able()
     </code>
     and
     <code>
-     getTable()
+     get_able()
     </code>
     . 
     Sierra is compatible with Pandas, meaning just enter the path to the CSV file in
@@ -525,7 +514,7 @@
     </code>
     in
     <code>
-     getTable()
+     get_able()
      <code>
       , and the table will display!
      </code>
@@ -533,14 +522,14 @@
    </p>
    <pre>
         
-    getTable(self, dataframe:str, attr=None)
+    get_table(self, dataframe:str, **kwargs)
 
-    with startTable() as st:
-        st.getTable("path/to/file.csv", attr=None)
-        st.css(font_family='Times New Roman')
+    with Table() as t:
+        t.get_table("path/to/file.csv", id="some_id")
+        t.css(font_family='Times New Roman')
 
 
-    # CSS styling arguments for getTable() and startTable()
+    # CSS styling arguments for get_table() and start_table() are as usual. No priorities. Use writeCSS() to add CSS to specific tag attributes
 
     .css(**kwargs)
         
@@ -549,31 +538,30 @@
    <p>
     As mentioned, you can also add a table with
     <code>
-     createTable()
+     create_table()
     </code>
     . Make sure the <code>arg rows</code> is a list of lists, even if there's only one row
    </p>
    <pre>
         
-    createTable(self, heads:list, rows:list, attr=None)
+    createTable(self, heads:list, rows:list, **kwargs)
 
     # heads(list, compulsory): Adds table headers
     # rows(list, compulsory) : Takes in a list of lists, each list representing a row
-    # attr(str, optional)    : Adds attributes to <table>
+    # kwargs(optional)       : Adds tag attributes to <table>
 
-    with startTable() as st:
+    with Table() as t:
         c = ['foo', 'foo1', 'foo2']
         r1 = ['united states', 'croatia', 'austria']
         r2 = ['czech', 'denmark', 'canada']
         r3 = ['netherlands', 'scotland', 'england']
         r = [r1, r2, r3]
 
-        st.createTable(heads=c, rows=r, attr="id='table_id'")
+        t.create_table(heads=c, rows=r, id='table_id')
 
     # Adding CSS
 
-    with cTags('#table_id') as t:
-        t.css(font_family="Arial, Helvetica, sans-serif", border="1px solid #d1d5e8", padding='8px', width='20%')
+    writeCSS(font_family="Arial, Helvetica, sans-serif", border="1px solid #d1d5e8", padding='8px', width='20%')
 
         Output:
         
@@ -649,7 +637,7 @@
     <code>
      .css()
     </code>
-    function - use one of <code>cTags()</code>, <code>writeCSS()</code>, <code>writeCSS_raw()</code> 
+    function - use one of <code>writeCSS()</code> or <code>writeCSS_raw()</code> 
     to add CSS to it
    </p>
    <pre>
@@ -660,10 +648,10 @@
     b = ['pt4', 'pt5']
     c = ['pt6']
 
-    with bullets(ul=False, points=a, attr="start='1' type='i'"):
-        with bullets(True, b, attr="type='square'"):
+    with bullets(ul=False, points=a, start='1', type='i'):
+        with bullets(ul=True, b, type='square'):
             pass
-    with bullets(ul=False, points=c, attr="start='4' type='I'"):
+    with bullets(ul=False, points=c, start='4', type='I'):
         pass
         
     Outputs:
@@ -710,7 +698,7 @@
     </code>
     and of course, attributes can be added with
     <code>
-     attr
+     **kwargs
     </code>
     . Just enter in a list of lists as the 
     first argument, and it will show as a description list. It is not a context manager besed approach.
@@ -718,9 +706,9 @@
    <pre>
 
     a = [[['foo'], ['foo1', 'foo2']], [['py', 'py1'], ['PEP', 'PEP8']]]
-    des_lists(a, "id='d_list'")
+    des_lists(a, id='d_list')
 
-    writeCSS('#d_list', {"margin-left":"40px"})
+    writeCSS('#d_list', margin_left="40px")
 
 
     Outputs:
@@ -792,7 +780,7 @@
         
         
     writeWA(text)
-    # writeWA() can be used to add any text/code onto the web application. This can be used to add text within certain tags. 
+    # writeWA() can be used to add any text/code onto the web application. This can be used to add any text to the HTML. 
     Here's an example: 
 
     with open_tag('pre'):
@@ -806,16 +794,21 @@
 
     title()
 
-    # Some CSS stuff for the HTML
-    # Content starts from here
+    @tag
+    def link(**kwargs):
+        pass
+    
+    @tag
+    def script(**kwargs):
+        pass
 
-    addFont('Any font link(s)')
+    addFont('Any font link')
 
-    #  Bootstrap link tags: 
+    #  Bootstrap link tags:
 
-    writeWA("\n"r'&lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"&gt;')
-    writeWA("\n"r'&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"&gt;')
-    writeWA("\n"r'&lt;script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"&gt;')
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css")
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js")
     
 
     Regular HTML escape sequences and glyphs and regular tags like &lt;a&gt; can be used within the context manager
@@ -824,43 +817,14 @@
     p('HTML &lt;a href="some_link"&gt;tag&lt;a/&gt; within a paragraph &lt;br&gt; This sentence comes after a break')
 
 
-    write_to_template(filename)
-
-    # This is used to write the web application into templates/ and static/ (for CSS)
-    # after running pre-defined functions (see the GitHub README) inside of app.route()
-
-    def the template():
-        title('test', templating=True)          # Set templating to True if Sierra is being used to template with Flask
-
-    def test_func():
-
-        the_template()
-        with div(div_class='someClass') as d:
-            p('Some paragraph within a div')
-            d.css(background_color="#1a1b1c", border="5px outset red", text_align="center", color="rgb(237, 241, 245)")
-
-        write_to_template('main1.html')
-        autoPrettify()    
-
-    @app.route("/some_route")
-    def show_test_func():
-        test_func()
-        return render_template('main1.html')
-
-    # See the GitHub README for more information on this
-
-
-    closeBody()
-    # Closes the &lt;body&gt; tag. Use autoPrettify() at the end of all development, instead
-
-    closeHTML()
-    # Closes the &lt;html&gt; tag. Use autoPrettify() at the end of all development, instead
 
     autoPrettify()
-    # It handles tags beautifully and improves overall look of the HTML code.
+    # It handles tags beautifully, closes unclosed tags, and improves overall look of the HTML code.
     # Use this at the end of all development outside all context managers. Using it inside or at a working 
-    # stage will not work well
-    # You can use this to avoid using closeHTML() and closeBody()
+    # stage will not work well. However if you want to add code to the HTML after &lt;/html&gt;, use autoPrettify(), add code, and THEN 
+    # use autoPrettify() again
+    
+    # Look at the end of the README on our GitHub repo to see the beauty of autoPrettify()
         
         
 </pre>
