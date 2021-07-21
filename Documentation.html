@@ -19,10 +19,11 @@
     <h1>Documentation - Sierra v2.0.0</h1>
     <div id="first_up">
         <p>
-            Wecome to the documentation of Sierra - Sierra is a Python library to write HTML and CSS in pure Python using the DOM API in a simple yet elegant manner. 
-            Take advantage of Python's powerful functionalities with ease. Loops, variables, functions, libraries - you name it, you have it. 
-            You can now develop your web application purely in Python, taking full advantage of its powerful functionalities with simple and elegant syntax. 
-            You can use this along with another templating engine, or use it standalone - even without a web framework, if you like. If you have any specific requests, open a discussion/issue on our GitHub page . Any contributions can also be made there.
+            Wecome to the documentation of Sierra - <b>Sierra is a Python library to write HTML and CSS in pure Python using the DOM API in a simple yet elegant manner.</b> 
+            Take advantage of Python's powerful functionalities with ease. <b>Loops, variables, functions, libraries</b> - you name it, you have it. 
+            You can now develop your web application purely in Python, taking full advantage of its powerful functionalities with <b>simple and elegant syntax.</b> 
+            You can use this along with another <b>templating engine</b>, or use it <b>standalone</b> - even without a web framework, if you like. 
+            If you have any specific requests, open a discussion/issue on our GitHub page . Any contributions can also be made there.
         </p>
         <p>Please read our <a href="https://github.com/BrainStormYourWayIn/sierra/blob/main/LICENSE">LICENSE</a> before moving forward.</p>
     </div>
@@ -46,13 +47,13 @@ pip install sierra
         <p>
             can be done as an easier way of installing. You can also clone the repository and work inside of src/sierra if you like.
             <br>
-            To import the library, simply use
+            To import the library, simply use:
         </p>
         <pre>
 
 from sierra import *
         </pre>
-        <p>Once imported, the first line of syntax is mandatory, and all development to be displayed on the webpage must come after this:</p>
+        <p>Once imported, <b>the first line of syntax is mandatory</b>, and all development to be displayed on the webpage must come after this:</p>
         <pre>
 
 title(Title, icon=False)
@@ -68,7 +69,6 @@ title(Title, icon=False)
         </p>
         <pre>
 head(Head, type='header', **kwargs)
-
 # head('Sierra', type='h1', color='#4287f5', font_family='Times New Roman')
 
 #Args:
@@ -91,10 +91,9 @@ openBody(**kwargs)
         <pre>
 
 addFont(font_link)
+# If you're using Google Fonts, take only the href attribute.
+# If &lt;link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&amp;display=swap" rel="stylesheet"&gt; is the the font tag to Roboto, take only the href attribute, then use.
 
-# If you're using Google Fonts, take only the href attribute
-# If &lt;link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&amp;display=swap" rel="stylesheet"&gt; is the the font tag to Roboto, take only the href attribute, then use
-            
 # addFont("https://fonts.googleapis.com/css2?family=Roboto:wght@100&amp;display=swap") 
             
 # You can then add "'Roboto', sans-serif" to the CSS as the font_family argument/font-family attribute, depending on the method of CSS used (See 'Using CSS').
@@ -117,8 +116,7 @@ with open_tag('tag_name', attr=None) as t:
     #  ---  Any content  ---  
         </pre>
         <p>
-            Coming out of <code>with</code> automatically closes the tag. <br> 
-            <code>**kwargs</code>, in <code>Tag()</code> enables the user to add attributes to their HTML tag.
+            Coming out of <code>with</code> automatically closes the tag. The <code>**kwargs</code> method, in <code>Tag()</code> enables the user to add attributes to their HTML tag.
         </p>
         <pre>
 
@@ -130,7 +128,8 @@ with open_tag('tag_name', attr="class='someClass' id='some_id'") as t:
         <p>
             This is the equivalent of <code>&lt;tag_name class='someClass' id='some_id'&gt;</code>. 
             <br>
-            Prefix Python-conflicting arguments with a double underscore, and use a single underscore in the place of a hyphen. Here, CSS is added to <code>tag_name</code>
+            <b>Prefix Python-conflicting arguments with a double underscore, and use a single underscore in the place of a hyphen</b>. 
+            Here, CSS is added to <code>tag_name</code>
             <br>
             With v2.4.0, you can <b>CREATE</b> functions for any tag and even control their behavior! Here's how you create 'short' tags that mostly come under <code><head></code>:
         </p>
@@ -181,7 +180,7 @@ writeCSS(tag, *args)
 #writeCSS('pre', {"background-color": "#edf7f7", "margin-left": "0.1%"})
 # This adds the specified CSS attributes in the dictionary to the tag &lt;pre&gt;
         </pre>
-        <p>The third way to do this, is to use <code>writeCSS_raw()</code>. Any text you specify in <code>writeCSS_raw()</code> gets written into the CSS file.</p>
+        <p>The third way is to use <code>writeCSS_raw()</code>. Any text you specify in <code>writeCSS_raw()</code> gets written into the CSS file.</p>
         <pre>
 
 writeCSS_raw(r"
@@ -200,7 +199,7 @@ pre {
         <pg_title>Working with div, section and p tags</pg_title>
         <p>
             Division and section tags can be opened the same way as <code>Tag()</code>, except the syntax is <code>div(**kwargs)</code> and <code>section(**kwargs)</code> respectively. 
-            It can take in tag attributes through <code>**kwargs</code>. 
+            It can take in tag attributes through the <code>**kwargs</code> method. 
             Prefix conflicting arguments with a double underscore and use a single underscore for hyphens. 
             While adding CSS for this is similar to the mechanism in <code>Tag()</code>, it differs in the fact that the <code>.css()</code> here prioritizes tag attributes given. 
             The first priority being for <code>__class</code>, the second being for <code>id</code>, and if both don't exist, CSS is just added to the tag raw. 
@@ -404,39 +403,44 @@ writeWA(text)
         Here's an example: 
         <pre>
 
+            writeWA(text)
+            # writeWA() can be used to add any text/code onto the web application. This can be used to add any text to the HTML.
+        </pre>
+        <p>Here's an example:</p>
+        <pre>
 with open_tag('pre'):
-    writeWA(r"This appears inside the &lt;pre&gt; tag")
+    writeWA(r"
+    This appears inside the <pre> tag
+")
 
 # Or say you want to add some Bootstrap to your page:
-
 title()
-# Some CSS stuff for the HTML
 
-# Content starts from here
+@tag
+def link(**kwargs):
+    pass
 
-#addFont('Any font link(s)')
-#Bootstrap link tags: 
-#writeWA("\n"r'&lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"&gt;')
-#writeWA("\n"r'&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"&gt;')
-#writeWA("\n"r'&lt;script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"&gt;')
-            
-Regular HTML escape sequences and glyphs and regular tags like &lt;a&gt; can be used within the context manager or any functions that involve displaying on the web application, like
+@tag
+def script(**kwargs):
+    pass
 
-p('HTML &lt;a href="some_link&gt;tag&lt;a/&gt; within a paragraph"')
+addFont('Any font link')
 
-closeBody()
-# Closes the &lt;body&gt; tag
-
-closeHTML()
-# Closes the &lt;html&gt; tag
+#  Bootstrap link tags:
+link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css")
+script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js")
+        </pre>
+            <p>Regular HTML escape sequences and glyphs and regular tags like <a> can be used within the context manager or any functions that involve displaying on the web application, like</p>
+        <pre>
+p('HTML <a href="some_link">tag<a/> within a paragraph <br> This sentence comes after a break')
 
 autoPrettify()
-# It closes unclosed tags and improves overall look of the HTML code.
-# Use this at the end of all development outside all context managers. Using it inside or at a working stage will not work well.
-# You can use this to avoid using closeHTML() and closeBody().
+# It handles tags beautifully, closes unclosed tags, and improves overall look of the HTML code.
+# Use this at the end of all development outside all context managers. Using it inside or at a working stage will not work well. 
+# However if you want to add code to the HTML after </html>, use autoPrettify(), add code, and THEN use autoPrettify() again
 
-var br
-# 'br' is a variable that stands for the HTML tag &lt;br&gt;. You can use this within f-strings  or any place else to break lines. Avoid using it to name another variable, since this will cause conflict. If used, define another variable for breaking or just use &lt;br&gt; as a regular HTML tag. (See writeWA())
+# Go to this to see the beauty of autoPrettify()
         </pre>
     </div>
     <hr>
