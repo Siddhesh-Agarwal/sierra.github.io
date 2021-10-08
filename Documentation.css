@@ -92,12 +92,12 @@ pg_title {
 }
 
 license {
-	font-family: 'Time New Roman', 'Helvetica Neue', sans-serif;
-	font-size: 30px;
+    font-family: 'Time New Roman', 'Helvetica Neue', sans-serif;
+    font-size: 30px;
 }
 
 #pagelinks {
-	font-family: 'Ubuntu', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 #table_id, th, td {
@@ -109,5 +109,5 @@ license {
 }
 
 #d_list {
-	margin-left: 40px;
+    margin-left: 40px;
 }
