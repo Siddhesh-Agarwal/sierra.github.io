@@ -19,7 +19,7 @@ p {
     line-height: 24px;
 }
 
-pre {
+license {
     padding: 2px 16px;
     border-radius: 5px;
     background-color: #e5e6e8;
@@ -65,7 +65,7 @@ ul {
     font-weight: 400;
 }
 
-code {
+inline {
     font-family: "Cutive mono", monospace;
     color: #161616;
     font-size: 16px;
@@ -73,10 +73,6 @@ code {
     font-weight: 400;
     background: whitesmoke;
     opacity: 95%;
-}
-
-blockquote {
-    font-family: 'Ubuntu', monospace;
 }
 
 pg_title {
@@ -89,11 +85,6 @@ pg_title {
     word-spacing: 0px;
     background-position: 0% 0%;
     margin-top: 30px;
-}
-
-license {
-    font-family: 'Time New Roman', 'Helvetica Neue', sans-serif;
-    font-size: 30px;
 }
 
 #pagelinks {
