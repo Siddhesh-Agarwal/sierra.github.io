@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <title>Sierra</title>
+    <link href="prism.css" rel="stylesheet">
+    <script src="prism.js"></script>
 </head>
 
 <body>
-    <div className="flex h-screen justify-center items-center">
-    </div>
+    <div className="flex h-screen justify-center items-center"></div>
     <header class="text-gray-600 body-font">
         <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
             <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
@@ -25,7 +26,7 @@
     </header>
 
     <section class="text-gray-600 body-font relative">
-        <div class="container px-5 py-24 mx-auto">
+        <: class="container px-5 py-24 mx-auto">
             <div class="flex flex-col text-center w-full mb-12">
                 <h1 class="sm:text-5xl text-4xl font-medium title-font mb-4 text-gray-900"> Sierra </h1>
                 <p class="lg:w-2/3 mx-auto leading-relaxed text-base"> Sierra is a micro-templating engine for web frameworks in Python. </p>
@@ -44,31 +45,129 @@
             <ul class="list-disc leading-relaxed">
                 <li>Out-of-the-box support for all CSS styling attributes for all tags</li>
                 <li>Display a table by simply putting in a CSV file</li>
-                <li>Create your own tag functions with absolute ease using @tag and @CmTag. You can decide their behavior and use them within content-managers too</li>
-                <li>Improvement in the arrangement look of the code and intelligent handling of tags with</li>
-                <li>autoPrettify() - Powered by bs4 and a feature like no other</li>
+                <li>Create your own tag functions with absolute ease using <code>@tag</code> and <code>@CmTag</code>. You can decide their behavior and use them within content-managers too</li>
+                <li>Improvement in the arrangement look of the code and intelligent handling of tags with <code>autoPrettify()</code> - Powered by bs4 and a feature like no other</li>
             </ul>
+            <b>You may also use this as a templating engine, although jinja and Django's templating engine is strongly recommended over this.</b>
 
             <!--Installation Section-->
             <div class="flex flex-col text-left w-full">
                 <h2 class="sm:text-4xl text-3xl font-medium title-font mb-3 text-gray-900">Installation</h2>
             </div>
             To download the library:
-            <div class="bg-gray-100 text-gray-700 border-l-0 border-gray-500 p-4 mb-2">pip install sierra</div>
+            <pre class="language-markup"><code>pip install sierra</code></pre>
 
             <!--Upgrade Section-->
             <div class="flex flex-col text-left w-full">
                 <h2 class="sm:text-4xl text-3xl font-medium title-font mb-3 text-gray-900">Upgrade</h2>
             </div>
             To download the library:
-            <div class="bg-gray-100 text-gray-700 border-l-0 border-gray-500 p-4 mb-2">pip install --upgrade sierra</div>
+            <pre class="language-markup"><code>pip install --upgrade sierra</code></pre>
 
             <!--Documentation Section-->
             <div class="flex flex-col text-left w-full">
                 <h2 class="sm:text-4xl text-3xl font-medium title-font mb-3 text-gray-900">Documentation</h2>
             </div>
             Check out the <a href="Documentation.html" target="_blank" class="font-bold">documentation</a> of Sierra
+            Starting off is pretty simple and straightforward:
+            <pre class="language-py"><code>from sierra import *
+
+title('Hello World!')</code></pre>
+            The <code>title()</code> function at the start is mandatory, since it commences the HTML and the CSS file, which is created in the working directory upon execution on the code. <br>
+            You can create custom tag functions with <code>@tag</code> and <code>@CmTag</code> with just three lines of code. Say you want to create a function for <code>&lt;meta&gt;</code>
+
+            <pre class="language-py"><code>@tag
+def meta(**kwargs):
+    pass
+
+# Using them
+meta(name="description", content="This is some description")
+meta(name="viewport", content="width=device-width", initial_scale=1.0)</code></pre>
+
+            Underscores are used for hyphens (same applies to CSS) and Python-conficting arguments are prefixed with a double underscore.
+            Using argument text inside of a function defined in <code>@tag</code> will create a tag that opens, enters text, and closes. Something like this:
+
+            <pre class="language-py"><code>@tag
+def script(**kwargs):
+    pass
+script(__async="", src="some_src", text="some_text")</code></pre>
+
+            Is the equivalent of:
+
+            <pre class="language-html"><code>&lt;script async="" src="some_src"&gt;some_text&lt;/script&gt;</code></pre>
             
+            Want to add some JS? Simple enough. Just create a function for the <code>&lt;script&gt;</code> tag with a context manager behavior using <code>@CmTag</code> and you're golden.
+
+            <pre class="language-py"><code>@CmTag
+def script(**kwargs):
+    pass
+
+# Here I'll be replicating the script needed to add Google Analytics to a webpage
+
+with script(__aync="", src="https://www.googletagmanager.com/gtag/js?id=UA—XXXXXXXX-X"):
+    pass
+
+with script():  
+    writeWA('''
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA—XXXXXXXX-X');''')</code></pre>
+
+            This is the equivalent of:
+
+            <pre class="language-js"><code>&lt;script async src="https://www.googletagmanager.com/gtag/js?id=UA—XXXXXXXX-X"&gt;&lt;/script&gt;
+
+&lt;script&gt;
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA—XXXXXXXX-X');
+&lt;/script&gt;</code></pre>
+
+            <code>writeWA()</code> writes text entered into it into the HTML file as it is. <br>
+            You can add fonts using <code>addFont()</code>
+
+            <pre class="language-py"><code>addFont("https://fonts.googleapis.com/css2?family=Roboto&display=swap")</code></pre>
+
+            Once things at the <head> of the HTML are settled (CSS is automatically linked), begin the body of the HTML with:
+
+            <pre class="language-py"><code>openBody()
+# You can add any number of styling arguments to the body within openBody()
+openBody(background_color='yellowgreen', opacity='0.9')</code></pre>
+
+            You can create &lt;div&gt; and &lt;section&gt; tags this way:
+
+            <pre class="language-py"><code>with div(__class="some_class") as d:
+p('This is a paragraph!')
+d.css(background_color="#5886d1")</code></pre>
+
+            Let's break this down but-by-bit:<br>
+            First, we start a div with a context manager behavior and give it an attribute <code>__class</code>, which is essentially the tag attribute class (remember Python-conflicting) arguments are prefixed by a double underscore. <br><br>
+            <code>p()</code> is a function, as the name suggests, to add a <code>&lt;p&gt;</code> tag. You can give the tag attributes with <code>**kwargs</code>, if you like.<br>
+            <code>p('Hello World!', __class='p_class')</code> is the same as <code>&lt;p class="p_class"&gt;Hello World!&lt;/p&gt;</code> <br><br>
+            After the paragraph, there's a <code>d.css()</code>. This adds CSS to the class mentioned within <code>div()</code>. If a class is mentioned, CSS is added to that class as the first priority. If an id is mentioned, CSS is added to that id as a second priority. If none of both are mentioned, CSS is just added to div. <br><br>
+            The behavior of div shown above also applies to section.<br><br>
+            You can open a new tag with <code>Tag()</code>
+
+            <pre class="language-py"><code>with Tag('some_tag', id='some_id') as t:
+    p('A paragraph in <some_tag>')
+    t.css(color='blue')</code></pre>
+
+            Although here, <code>.css()</code> behaves differently. It is independent of tag attributes, meaning CSS is added directly to the tag mentioned, which is some_tag<br>
+            You can add a table to the HTML page by inputting in a CSV file this way:
+
+            <pre class="language-py"><code>with Table() as t:
+    t.get_table("path/to/file.csv")   # Add attributes with **kwargs here
+    t.css(border="1px solid black")   # Use writeCSS to add CSS to a specific attribute</code></pre>
+
+            There are MANY more functionalities to Sierra that you can see from the <a href="Documentation.html" target="_blank">documentation</a> <br><br>
+            At the end of all development with Sierra, use
+
+            <pre class="language-py"><code>autoPrettify()</code></pre>
+            It takes in no arguments, but provides SO much to the code. <br>
+            Have a look at this example to see just how <code>autoPrettify()</code> works:
+
             <!--Example Section-->
             <div class="flex flex-col text-left w-full">
                 <h2 class="sm:text-4xl text-3xl font-medium title-font mb-3 text-gray-900">Example</h2>
