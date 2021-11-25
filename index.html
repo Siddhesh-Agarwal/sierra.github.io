@@ -3,35 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Sierra - A Python micro templating engine for web frameworks">
+    <meta name="keywords" content="html, css, js, jinja, django, python, web framework, templating">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <title>Sierra</title>
-    <link href="prism.css" rel="stylesheet">
-    <script src="prism.js"></script>
+    <link rel="apple-touch-icon" href="./img/sierra.png">
+    <link href="./css/style.css" rel="stylesheet">
+    <link href="./css/prism.css" rel="stylesheet">
+    <script src="./js/prism.js"></script>
 </head>
 
 <body>
     <div className="flex h-screen justify-center items-center"></div>
-    <header class="text-gray-600 body-font">
+    <header class="text-gray-700 body-font">
         <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
             <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-                <span class="ml-3 text-xl"> Sierra </span>
+                <a class="ml-3 text-xl"> Sierra </a>
             </a>
             <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
-                <a class="mr-5 hover:text-gray-900" href="Documentation.html" target="_blank"> Documentation </a>
-                <a class="mr-5 hover:text-gray-900" href="http://github.com/BrainStormYourWayIn/sierra" target="_blank"> GitHub </a>
-                <a class="mr-5 hover:text-gray-900" href="ContactUs.html" target="_blank"> Contact us </a>
+                <a class="mr-5 hover:text-gray-900" href="Documentation.html" target="_blank" rel="noopener noreferrer"> Documentation </a>
+                <a class="mr-5 hover:text-gray-900" href="http://github.com/BrainStormYourWayIn/sierra" target="_blank" rel="noopener noreferrer"> GitHub </a>
+                <a class="mr-5 hover:text-gray-900" href="ContactUs.html" target="_blank" rel="noopener noreferrer"> Contact us </a>
             </nav>
         </div>
     </header>
 
-    <section class="text-gray-600 body-font relative">
-        <: class="container px-5 py-24 mx-auto">
+    <section class="text-gray-700 body-font relative">
+        <div class="container px-5 py-32 mx-auto">
             <div class="flex flex-col text-center w-full mb-12">
                 <h1 class="sm:text-5xl text-4xl font-medium title-font mb-4 text-gray-900"> Sierra </h1>
-                <p class="lg:w-2/3 mx-auto leading-relaxed text-base"> Sierra is a micro-templating engine for web frameworks in Python. </p>
             </div>
-
+            <br>
             <!--About Section-->
             <div class="flex flex-col text-left w-full">
                 <h2 class="sm:text-4xl text-3xl font-medium title-font mb-3 text-gray-900">About</h2>
@@ -45,38 +48,38 @@
             <ul class="list-disc leading-relaxed">
                 <li>Out-of-the-box support for all CSS styling attributes for all tags</li>
                 <li>Display a table by simply putting in a CSV file</li>
-                <li>Create your own tag functions with absolute ease using <code>@tag</code> and <code>@CmTag</code>. You can decide their behavior and use them within content-managers too</li>
-                <li>Improvement in the arrangement look of the code and intelligent handling of tags with <code>autoPrettify()</code> - Powered by bs4 and a feature like no other</li>
+                <li>Create your own tag functions with absolute ease using <code class="language-py">@tag</code> and <code class="language-py">@CmTag</code>. You can decide their behavior and use them within content-managers too</li>
+                <li>Improvement in the arrangement look of the code and intelligent handling of tags with <code class="language-py">autoPrettify()</code> - Powered by bs4 and a feature like no other</li>
             </ul>
             <b>You may also use this as a templating engine, although jinja and Django's templating engine is strongly recommended over this.</b>
-
+            <br><br>
             <!--Installation Section-->
             <div class="flex flex-col text-left w-full">
                 <h2 class="sm:text-4xl text-3xl font-medium title-font mb-3 text-gray-900">Installation</h2>
             </div>
-            To download the library:
-            <pre class="language-markup"><code>pip install sierra</code></pre>
-
+            To Download the library:
+            <pre class="command-line language-powershell"><code>pip install sierra</code></pre>
+            <br>
             <!--Upgrade Section-->
             <div class="flex flex-col text-left w-full">
                 <h2 class="sm:text-4xl text-3xl font-medium title-font mb-3 text-gray-900">Upgrade</h2>
             </div>
-            To download the library:
-            <pre class="language-markup"><code>pip install --upgrade sierra</code></pre>
-
+            To Upgrade the library:
+            <pre class="command-line language-powershell"><code>pip install --upgrade sierra</code></pre>
+            <br>
             <!--Documentation Section-->
             <div class="flex flex-col text-left w-full">
                 <h2 class="sm:text-4xl text-3xl font-medium title-font mb-3 text-gray-900">Documentation</h2>
             </div>
             Check out the <a href="Documentation.html" target="_blank" class="font-bold">documentation</a> of Sierra
             Starting off is pretty simple and straightforward:
-            <pre class="language-py"><code>from sierra import *
+            <pre class="line-numbers"><code class="language-py">from sierra import *
 
 title('Hello World!')</code></pre>
-            The <code>title()</code> function at the start is mandatory, since it commences the HTML and the CSS file, which is created in the working directory upon execution on the code. <br>
-            You can create custom tag functions with <code>@tag</code> and <code>@CmTag</code> with just three lines of code. Say you want to create a function for <code>&lt;meta&gt;</code>
+            The <code class="language-py">title()</code> function at the start is mandatory, since it commences the HTML and the CSS file, which is created in the working directory upon execution on the code. <br>
+            You can create custom tag functions with <code class="language-py">@tag</code> and <code class="language-py">@CmTag</code> with just three lines of code. Say you want to create a function for <code class="language-html">&lt;meta&gt;</code>
 
-            <pre class="language-py"><code>@tag
+            <pre class="line-numbers"><code class="language-py">@tag
 def meta(**kwargs):
     pass
 
@@ -87,18 +90,18 @@ meta(name="viewport", content="width=device-width", initial_scale=1.0)</code></p
             Underscores are used for hyphens (same applies to CSS) and Python-conficting arguments are prefixed with a double underscore.
             Using argument text inside of a function defined in <code>@tag</code> will create a tag that opens, enters text, and closes. Something like this:
 
-            <pre class="language-py"><code>@tag
+            <pre class="line-numbers"><code class="language-py">@tag
 def script(**kwargs):
     pass
 script(__async="", src="some_src", text="some_text")</code></pre>
 
             Is the equivalent of:
 
-            <pre class="language-html"><code>&lt;script async="" src="some_src"&gt;some_text&lt;/script&gt;</code></pre>
+            <pre class="line-numbers"><code class="language-html">&lt;script async="" src="some_src"&gt;some_text&lt;/script&gt;</code></pre>
             
             Want to add some JS? Simple enough. Just create a function for the <code>&lt;script&gt;</code> tag with a context manager behavior using <code>@CmTag</code> and you're golden.
 
-            <pre class="language-py"><code>@CmTag
+            <pre class="line-numbers"><code class="language-py">@CmTag
 def script(**kwargs):
     pass
 
@@ -116,7 +119,7 @@ with script():
 
             This is the equivalent of:
 
-            <pre class="language-js"><code>&lt;script async src="https://www.googletagmanager.com/gtag/js?id=UA—XXXXXXXX-X"&gt;&lt;/script&gt;
+            <pre class="line-numbers"><code class="language-js">&lt;script async src="https://www.googletagmanager.com/gtag/js?id=UA—XXXXXXXX-X"&gt;&lt;/script&gt;
 
 &lt;script&gt;
     window.dataLayer = window.dataLayer || [];
@@ -128,17 +131,17 @@ with script():
             <code>writeWA()</code> writes text entered into it into the HTML file as it is. <br>
             You can add fonts using <code>addFont()</code>
 
-            <pre class="language-py"><code>addFont("https://fonts.googleapis.com/css2?family=Roboto&display=swap")</code></pre>
+            <pre class="line-numbers"><code class="language-py">addFont("https://fonts.googleapis.com/css2?family=Roboto&display=swap")</code></pre>
 
             Once things at the <head> of the HTML are settled (CSS is automatically linked), begin the body of the HTML with:
 
-            <pre class="language-py"><code>openBody()
+                <pre class="line-numbers"><code class="language-py">openBody()
 # You can add any number of styling arguments to the body within openBody()
 openBody(background_color='yellowgreen', opacity='0.9')</code></pre>
 
             You can create &lt;div&gt; and &lt;section&gt; tags this way:
 
-            <pre class="language-py"><code>with div(__class="some_class") as d:
+            <pre class="line-numbers"><code class="language-py">with div(__class="some_class") as d:
 p('This is a paragraph!')
 d.css(background_color="#5886d1")</code></pre>
 
@@ -150,33 +153,29 @@ d.css(background_color="#5886d1")</code></pre>
             The behavior of div shown above also applies to section.<br><br>
             You can open a new tag with <code>Tag()</code>
 
-            <pre class="language-py"><code>with Tag('some_tag', id='some_id') as t:
+            <pre class="line-numbers"><code class="language-py">with Tag('some_tag', id='some_id') as t:
     p('A paragraph in <some_tag>')
     t.css(color='blue')</code></pre>
 
             Although here, <code>.css()</code> behaves differently. It is independent of tag attributes, meaning CSS is added directly to the tag mentioned, which is some_tag<br>
             You can add a table to the HTML page by inputting in a CSV file this way:
 
-            <pre class="language-py"><code>with Table() as t:
+            <pre class="line-numbers"><code class="language-py">with Table() as t:
     t.get_table("path/to/file.csv")   # Add attributes with **kwargs here
     t.css(border="1px solid black")   # Use writeCSS to add CSS to a specific attribute</code></pre>
 
             There are MANY more functionalities to Sierra that you can see from the <a href="Documentation.html" target="_blank">documentation</a> <br><br>
             At the end of all development with Sierra, use
 
-            <pre class="language-py"><code>autoPrettify()</code></pre>
+            <pre class="line-numbers"><code class="language-py">autoPrettify()</code></pre>
             It takes in no arguments, but provides SO much to the code. <br>
-            Have a look at this example to see just how <code>autoPrettify()</code> works:
-
+            Have a look at this example to see just how <code>autoPrettify()</code> works.
+            <br>
             <!--Example Section-->
             <div class="flex flex-col text-left w-full">
                 <h2 class="sm:text-4xl text-3xl font-medium title-font mb-3 text-gray-900">Example</h2>
             </div>
             Using this with Flask makes life easier if you're developing web applications with just HTML and CSS.
-            <div class="bg-red-100 text-red-500 border-l-8 border-red-500 p-4 mb-2">
-                <p class="font-bold">JS not supported</p>
-                <p>Adding JS is not yet supported by Sierra and has to be done manually (if desired).</p>
-            </div>
             It can also be used standalone in developing web applications. You can also use this as an alternative to jinja or Django or another templating engine, or use it along with one.
             It's got features like displaying a table on the web application by loading in a .csv file, adding a bulleted list (ol/ul) by just passing in a Python list, automatic support for CSS styling arguments and more! You can use for loops, variables, functions - you name it, you have it, with Sierra. 
             Improvement in the overall look of the code and intelligent handling of tags with <code>autoPrettify()</code>, a feature like no other. Harness the power of Python for your web applications!
@@ -184,32 +183,32 @@ d.css(background_color="#5886d1")</code></pre>
                 <p class="font-bold">Note for users</p>
                 <p>This is a relatively new project, so we're developing at a fast pace. If you have any suggestions or issue or just want to open a discussion, feel free to do so!</p>
             </div>
-
+            <br>
             <!--Contact Us Section-->
             <div class="flex flex-col text-left w-full">
                 <h2 class="sm:text-4xl text-3xl font-medium title-font mb-3 text-gray-900">Contact Us</h2>
             </div>
             <address>
-                Write to us at: <a href="mailto:brainstormyourwayin@gmail.com">brainstormyourwayin@gmail.com</a>
+                Write to us at: <a href="mailto:brainstormyourwayin@gmail.com"><b>brainstormyourwayin@gmail.com</b></a>
             </address>
         </div>
     </section>
 
     <!--Footer-->
-    <footer class="text-gray-600 body-font">
+    <footer class="text-gray-700 body-font">
         <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
             <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
                 <span class="ml-3 text-xl">Sierra</span>
             </a>
-            <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2021 BrainStormYourWayIn —
-                <a href="https://github.com/BrainStormYourWayIn" class="text-gray-600 ml-1" rel="noopener noreferrer" target="_blank">@BrainStormYourWayIn</a>
+            <p class="text-sm text-gray-700 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2021 BrainStormYourWayIn —
+                <a href="https://github.com/BrainStormYourWayIn" class="text-gray-800 ml-1" rel="noopener noreferrer" target="_blank">@BrainStormYourWayIn</a>
             </p>
             <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-                <a class="ml-4 text-gray-500" href="http://github.com/BrainStormYourWayIn/sierra" target="_blank">
-                    <img src="https://github.githubassets.com/images/modules/site/icons/footer/github-mark.svg" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                <a class="ml-4 text-gray-500" href="http://github.com/BrainStormYourWayIn/sierra" target="_blank" rel="noopener noreferrer">
+                    <img src="https://github.githubassets.com/images/modules/site/icons/footer/github-mark.svg" height="10" width="10" alt="GitHub logo" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
                 </a>
-                <a class="ml-4 text-gray-500" href="http://gitlab.com/BrainStormYourWayIn/sierra" target="_blank">
-                    <img src="https://docs.gitlab.com/assets/images/gitlab-logo.svg" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                <a class="ml-4 text-gray-500" href="http://gitlab.com/BrainStormYourWayIn/sierra" target="_blank" rel="noopener noreferrer">
+                    <img src="https://docs.gitlab.com/assets/images/gitlab-logo.svg" height="10" width="10" alt="Gitlab logo" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
                 </a>
             </span>
         </div>

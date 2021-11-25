@@ -3,21 +3,16 @@
 <meta charset="utf-8"/>
 <head>
     <meta name="description" content="Sierra - A Python micro templating engine for web frameworks">
-    <meta name="keywords" content="html,css,jinja,django,python,web framework,templating">
+    <meta name="keywords" content="html, css, js, jinja, django, python, web framework, templating">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="Documentation.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Signika+Negative&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&amp;display=swap" rel="stylesheet">
     <title>Documentation | Sierra - 2.0.0</title>
-    <link href="prism.css" rel="stylesheet">
-    <script src="prism.js"></script>
+    <link rel="apple-touch-icon" href="./img/sierra.png">
+    <link href="./css/style.css" rel="stylesheet">
+    <link href="./css/prism.css" rel="stylesheet">
+    <script src="./js/prism.js"></script>
 </head>
 <body>
-    <a href="https://github.com/BrainStormYourWayIn/sierra"><img alt="Sierra logo" src="sierra.jpg"/></a>
+    <a href="https://github.com/BrainStormYourWayIn/sierra"><img src="./img/sierra.png" height="137" width="362" alt="Sierra logo"/></a>
     <h1>Documentation - Sierra v2.0.0</h1>
     <div id="first_up">
         <p>
@@ -31,44 +26,36 @@
     </div>
     <p>Contents:</p>
     <ul id="pagelinks">
-        <li><a href="https://brainstormyourwayin.github.io/sierra.github.io/py_out/index.html" target='_blank'>Opening tags, Creating custom functions for you own, and controlling their behavior</a></li>
-        <li><a href="#css-ing">Using CSS</a></li>
-        <li><a href="#tTags">Working with div, section and p tags</a></li>
-        <li><a href="#add_img">Adding images</a></li>
-        <li><a href="#tables">Working with tables (Pandas supported)</a></li>
-        <li><a href="#bullets_and_lists">Bulleted lists (ordered and unordered)</a></li>
-        <li><a href="#des_lists">Adding a description list</a></li>
-        <li><a href="#other_funcs">Other functions (add Bootstrap, script, escaping and more)</a></li>
+        <li><a href="py_out.html" target='_blank' rel="noopener noreferrer">Opening tags, Creating custom functions for you own, and controlling their behavior</a></li>
+        <li><a href="#css-ing" rel="noopener noreferrer">Using CSS</a></li>
+        <li><a href="#tTags" rel="noopener noreferrer">Working with div, section and p tags</a></li>
+        <li><a href="#add_img" rel="noopener noreferrer">Adding images</a></li>
+        <li><a href="#tables" rel="noopener noreferrer">Working with tables (Pandas supported)</a></li>
+        <li><a href="#bullets_and_lists" rel="noopener noreferrer">Bulleted lists (ordered and unordered)</a></li>
+        <li><a href="#des_lists" rel="noopener noreferrer">Adding a description list</a></li>
+        <li><a href="#other_funcs" rel="noopener noreferrer">Other functions (add Bootstrap, script, escaping and more)</a></li>
     </ul>
     <p>Let's get started</p>
     <div id="starting_off">
-        <pre class="language-markup"><code>
-pip install sierra
-        </code></pre>
+        <pre class="language-markup"><code>pip install sierra</code></pre>
         <p>
             can be done as an easier way of installing. You can also clone the repository and work inside of src/sierra if you like.
             <br>
             To import the library, simply use:
         </p>
-        <pre class="language-python"><code>
-from sierra import *
-        </code></pre>
+        <pre class="language-python"><code>from sierra import *</code></pre>
         <p>Once imported, <b>the first line of syntax is mandatory</b>, and all development to be displayed on the webpage must come after this:</p>
-        <pre class="language-python"><code>
-
-title(Title, icon=False)
+        <pre class="language-python"><code>title(Title, icon=False)
 
 #Args:
 #    Title(str, compulsory) : Title of the HTML file.
-#    icon(str, optional) : Icon to be displayed. Should be a .ico file. Defaults to no icon.
-        </code></pre>
+#    icon(str, optional) : Icon to be displayed. Should be a .ico file. Defaults to no icon.</code></pre>
         <p>
             This creates an <inline>index.html</inline> and a <inline>style.css</inline> in the working directory.
             <br>
             You can add a header with <inline>head()</inline>. Start the body of the web application with <inline>openBody()</inline>. Add CSS with <inline>**kwargs</inline>.
         </p>
-        <pre class="language-python"><code>
-head(Head, type='header', **kwargs)
+        <pre class="language-python"><code>head(Head, type='header', **kwargs)
 # head('Sierra', type='h1', color='#4287f5', font_family='Times New Roman')
 
 #Args:
@@ -77,8 +64,7 @@ head(Head, type='header', **kwargs)
 #    **kwargs (optional)              : CSS styling arguments
         
 openBody(**kwargs)
-# openBody(background_color='blue', opacity=1.8)
-        </code></pre>
+# openBody(background_color='blue', opacity=1.8)</code></pre>
         <p>
             You may notice in styling with <inline>**kwargs</inline>, that the styling argument <inline>font-family</inline> and <inline>background-color</inline> is entered in as <inline>font_family</inline> and <inline>background-color</inline>. 
             That is, underscores are used in <inline>**kwargs</inline> in the place of hyphens. 
@@ -88,15 +74,13 @@ openBody(**kwargs)
         </p>
         <br>
         <p>Fonts can be added with <inline>addFont()</inline> which takes only one argument, which is the link to the font.</p>
-        <pre class="language-python"><code>
-addFont(font_link)
+        <pre class="language-python"><code>addFont(font_link)
 # If you're using Google Fonts, take only the href attribute.
 # If &lt;link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&amp;display=swap" rel="stylesheet"&gt; is the the font tag to Roboto, take only the href attribute, then use.
 
 # addFont("https://fonts.googleapis.com/css2?family=Roboto:wght@100&amp;display=swap") 
             
-# You can then add "'Roboto', sans-serif" to the CSS as the font_family argument/font-family attribute, depending on the method of CSS used (See 'Using CSS').
-        </code></pre>
+# You can then add "'Roboto', sans-serif" to the CSS as the font_family argument/font-family attribute, depending on the method of CSS used (See 'Using CSS').</code></pre>
     </div>
     <hr>
 
@@ -107,21 +91,17 @@ addFont(font_link)
             Tags can be opened with <inline>Tag(name_of_tag, **kwargs)</inline>, and CSS can be added with <inline>.css()</inline>, which is the same mechanism that <inline>head()</inline> and <inline>openBody()</inline> contains, except that it is now used as a function under a class. 
             Any inline within that tag can be entered with a context manager approach under <inline>with</inline>
         </p>
-        <pre class="language-python"><code>
-with open_tag('tag_name', attr=None) as t:
+        <pre class="language-python"><code>with open_tag('tag_name', attr=None) as t:
     t.css(font_color='rgb(11, 176, 89)')
 
-    #  ---  Any content  ---  
-        </code></pre>
+    #  ---  Any content  ---  </code></pre>
         <p>
             Coming out of <inline>with</inline> automatically closes the tag. The <inline>**kwargs</inline> method, in <inline>Tag()</inline> enables the user to add attributes to their HTML tag.
         </p>
-        <pre class="language-python"><code>
-with open_tag('tag_name', attr="class='someClass' id='some_id'") as t:
+        <pre class="language-python"><code>with open_tag('tag_name', attr="class='someClass' id='some_id'") as t:
     t.css(font_color='rgb(11, 176, 89)')
 
-    #  ---  Any content  ---  
-        </code></pre>
+    #  ---  Any content  ---  </code></pre>
         <p>
             This is the equivalent of <inline>&lt;tag_name class='someClass' id='some_id'&gt;</inline>. 
             <br>
@@ -130,28 +110,22 @@ with open_tag('tag_name', attr="class='someClass' id='some_id'") as t:
             <br>
             With v2.4.0, you can <b>CREATE</b> functions for any tag and even control their behavior! Here's how you create 'short' tags that mostly come under <inline><head></inline>:
         </p>
-        <pre class="language-python"><code>
-@tag
+        <pre class="language-python"><code>@tag
 def meta(**kwargs):
     pass
 
 meta(name="description", content="This is some description")
-meta(name="viewport", content="width=device-width", initial_scale=1.0)
-        </code></pre>
+meta(name="viewport", content="width=device-width", initial_scale=1.0)</code></pre>
         <p>This is equivalent to:</p>
-        <pre class="language-html"><code>          
-&lt;meta name="description" content="This is some description"&gt;
-&lt;meta name="viewport" content="width=device-width" initial-scale=1.0&gt;
-        </code></pre>
+        <pre class="language-html"><code>&lt;meta name="description" content="This is some description"&gt;
+&lt;meta name="viewport" content="width=device-width" initial-scale=1.0&gt;</code></pre>
         <p>Using argument <inline>text</inline> makes the tag close after the opening of the tag</p>
-        <pre class="language-python"><code>
-@tag
+        <pre class="language-python"><code>@tag
 def script(**kwargs):
     pass
 
 script(__async="", src="some_src", text="")            
-# You can enter any text to appear within the tag. Not using `text` creates a tag similar to the <meta> tag
-        </code></pre>
+# You can enter any text to appear within the tag. Not using `text` creates a tag similar to the &lt;meta&gt; tag</code></pre>
     </div>
     <hr>
 
@@ -162,29 +136,24 @@ script(__async="", src="some_src", text="")
             There are three ways you can add CSS to tags. The first one is with <inline>.css()</inline>, which takes in <inline>**kwargs</inline>, and can only be used within the context managers of already existing syntax, like <inline>Tag()</inline> and <inline>div()</inline>. 
             Underscores are used in the key or <inline>**kwargs</inline> instead of hyphens in styling attributes.
         </p>
-        <pre class="language-python"><code>
-.css(**kwargs)
-        </code></pre>
+        <pre class="language-python"><code>.css(**kwargs)</code></pre>
         <p>
             The second way is to use <inline>writeCSS()</inline>. It takes in a dictionary of CSS attributes, and adds them to the tag mentioned as the first argument in <inline>writeCSS().</inline>.
         </p>
-        <pre class="language-python"><code>
-writeCSS(tag, *args)
+        <pre class="language-python"><code>writeCSS(tag, *args)
 # *args takes in a dictionary of styling attributes.
 
 #writeCSS('pre', {"background-color": "#edf7f7", "margin-left": "0.1%"})
-# This adds the specified CSS attributes in the dictionary to the tag &lt;pre&gt;
-        </code></pre>
+# This adds the specified CSS attributes in the dictionary to the tag &lt;pre&gt;</code></pre>
+
         <p>The third way is to use <inline>writeCSS_raw()</inline>. Any text you specify in <inline>writeCSS_raw()</inline> gets written into the CSS file.</p>
-        <pre class="language-python"><code>
-writeCSS_raw(r"
+        <pre class="language-python"><code>writeCSS_raw(r"""
 pre {
     background-color: #edf7f7;
-    margin-left": "0.1%;
-}")
-            
-# This writes the exact text in writeCSS_raw() to style.css
-        </code></pre>
+    margin-left: 0.1%;
+}""")
+
+# This writes the exact text in writeCSS_raw() to style.css</code></pre>
     </div>
     <hr>
 
@@ -200,27 +169,23 @@ pre {
             That is <inline>div</inline> or <inline>section</inline>. Entering in both <inline>__class</inline> and <inline>id</inline> results in CSS being added to the class, and enters it to id in the absence of <inline>__class</inline>.
             If you don't want to add CSS this way using <inline>.css()</inline>, use <inline>writeCSS()</inline> instead, where you can add CSS to any tag/attribute, simply use <inline>'#name_of_id'</inline> or <inline>'.name_of_class'</inline> as the first argument.
         </p>
-        <pre class="language-python"><code>
-div(**kwargs)
+        <pre class="language-python"><code>div(**kwargs)
 section(**kwargs)
-        
+
 #with div(__class='div_class') as d:
 #    d.css(background_color="#e0e330")
 #    with section(id='sec_id'):
 #        p("This is a paragraph inside a section which has attribute id=sec_id, and is inside a div")
 
-#writeCSS('#sec_id', margin_top='30px')
-        </code></pre>
+#writeCSS('#sec_id', margin_top='30px')</code></pre>
         <p>
             <inline>p</inline> tags can be added with <inline>p()</inline>. 
             The text to be added goes into the <inline>text</inline> attribute, and tag attributes, as usual, can be added to <inline>attr</inline>. 
             However, <inline>p()</inline> is not a context manager-based approach, as shown above under the section tag, and closes upon argument exit.
             Use <inline>writeCSS()</inline> or <inline>writeCSS_raw()</inline> to add css.
         </p>
-        <pre class="language-python"><code>
-p(text, **kwargs)
-# p('This is some text that goes inside a paragraph. Atrributes can be added to attr', __class='someClass')
-        </code></pre>
+        <pre class="language-python"><code>p(text, **kwargs)
+# p('This is some text that goes inside a paragraph. Atrributes can be added to attr', __class='someClass')</code></pre>
     </div>
     <hr>
 
@@ -230,13 +195,11 @@ p(text, **kwargs)
         <p>
             Images can be added with <inline>image()</inline> as context manager based approach, <inline>.show()</inline> which takes no arguments is used to display the image and <inline>.css()</inline> can be used to add CSS (no priorities, just adds to <inline>img</inline>), or one of the other three methods to add it to a class or an id.
         </p>
-        <pre class="language-python"><code>
-image(src:str, **kwargs)
+        <pre class="language-python"><code>image(src:str, **kwargs)
 
 with image('sierra.jpg', alt='Sierra', href='https://www.google.com', target='_blank') as i:
     i.show()
-    i.css(opacity=1.1, width='50px')
-        </code></pre>
+    i.css(opacity=1.1, width='50px')</code></pre>
     </div>
     <hr>
 
@@ -247,36 +210,33 @@ with image('sierra.jpg', alt='Sierra', href='https://www.google.com', target='_b
             Adding a table could never have been easier with a context manager approach on <inline>Table()</inline>, which takes no arguments and has objects <inline>create_table()</inline> and <inline>get_table()</inline>. 
             Sierra is compatible with Pandas, meaning just enter the path to the CSV file in <inline>arg dataframe</inline> in <inline>getTable()</inline>, and the table will display!
         </p>
-        <pre class="language-python"><code>
-get_table(self, dataframe:str, **kwargs)
+        <pre class="language-python"><code>get_table(self, dataframe:str, **kwargs)
 
 with Table() as t:
     t.get_table("path/to/file.csv", id="some_id")
     st.css(font_family='Times New Roman')
 
-    # CSS styling arguments for get_table() and start_table() are as usual. No priorities. Use writeCSS() to add CSS to specific tag attributes.
+    # CSS styling arguments for get_table() and start_table() are as usual.
+    # No priorities. Use writeCSS() to add CSS to specific tag attributes.
 
-.css(**kwargs)
-        </code></pre>
+.css(**kwargs)</code></pre>
         <p>As mentioned, you can also add a table with <inline>create_table()</inline>. Make sure the arg rows is a list of lists, even if there's only one row</p>
-        <pre class="language-python"><code>
-createTable(self, heads:list, rows:list, **kwargs)
+        <pre class="language-python"><code>createTable(self, heads:list, rows:list, **kwargs)
 # heads(list, compulsory): Adds table headers
 # rows(list, compulsory) : Takes in a list of lists, each list representing a row
 # kwargs(optional)       : Adds tag attributes to 
-        
+
 with Table() as t:
     c = ['foo', 'foo1', 'foo2']
     r1 = ['united states', 'croatia', 'austria']
     r2 = ['czech', 'denmark', 'canada']
     r3 = ['netherlands', 'scotland', 'england']
     r = [r1, r2, r3]
-        
+
     t.create_table(heads=c, rows=r, id='table_id')
-        
+
 # Adding CSS        
-writeCSS(font_family="Arial, Helvetica, sans-serif", border="1px solid #d1d5e8", padding='8px', width='30%')
-        </code></pre>
+writeCSS(font_family="Arial, Helvetica, sans-serif", border="1px solid #d1d5e8", padding='8px', width='30%')</code></pre>
         <p>Output:</p>
         <table id="table_id">
             <tr>
@@ -311,8 +271,7 @@ writeCSS(font_family="Arial, Helvetica, sans-serif", border="1px solid #d1d5e8",
             Just enter a list into the argument <inline>points</inline>, specify the type of the list (ordered or unordered), attributes if necessary, and you're good to go. 
             It doesn't have a <inline>.css()</inline> function - use one of the three methods to add CSS to it.
         </p>
-        <pre class="language-python"><code>
-bullets(ul:bool, points:list, attr=None)
+        <pre class="language-python"><code>bullets(ul:bool, points:list, attr=None)
 
 a = ['pt1', 'pt2', 'pt3']
 b = ['pt4', 'pt5']
@@ -322,8 +281,7 @@ with bullets(ul=False, points=a, attr="start='1' type='i'"):
     with bullets(True, b, attr="type='square'"):
         pass
 with bullets(ul=False, points=c, attr="start='4' type='I'"):
-    pass
-        </code></pre>
+    pass</code></pre>
         Output:
         <ol start="1" type="i">
             <li>pt1</li>
@@ -348,12 +306,10 @@ with bullets(ul=False, points=c, attr="start='4' type='I'"):
             Just enter in a list of lists as the first argument, and it will show as a description list. 
             It is not a context manager-based approach.
         </p>
-        <pre class="language-python"><code>
-writeCSS('#d_list', {"margin-left":"40px"})
+        <pre class="language-python"><code>writeCSS('#d_list', {"margin-left":"40px"})
 
 a = [[['foo'], ['foo1', 'foo2']], [['py', 'py1'], ['PEP', 'PEP8']]]
-des_lists(a, "id='d_list'")
-        </code></pre>
+des_lists(a, "id='d_list'")</code></pre>
         Output:
         <dl id="d_list">
             <dt>foo</dt>
@@ -375,6 +331,8 @@ des_lists(a, "id='d_list'")
     </div>
     <hr>
     <div id="other_funcs">
+
+        <!-- Other functions -->
         <pg_title>Other functions</pg_title>
         <p>
             Python functions/variables or anything can be added onto the web application using Sierra with much ease. However keep in mind, that every
@@ -382,23 +340,12 @@ des_lists(a, "id='d_list'")
             <br>
             Here's a list of other functions you can use with Sierra:
         </p>
-        <pre class="language-python"><code>
-writeWA(text)
+        <pre class="language-python"><code>writeWA(text)
 # writeWA() can be used to add any text/inline onto the web application.
-# This can be used to add text within certain tags. 
-        </code></pre>    
-        Here's an example: 
-        <pre class="language-python"><code>
-writeWA(text)
-# writeWA() can be used to add any text/inline onto the web application.
-# This can be used to add any text to the HTML.
-        </code></pre>
+# This can be used to add text within certain tags.</code></pre>
         <p>Here's an example:</p>
-        <pre class="language-python"><code>
-with open_tag('pre'):
-    writeWA(r"
-    This appears inside the <pre class=""><code> tag
-")
+        <pre class="language-python"><code>with open_tag('pre'):
+    writeWA(r"This appears inside the &lt;pre class=""&gt;&lt;code&gt; tag")
 
 # Or say you want to add some Bootstrap to your page:
 title()
@@ -416,19 +363,17 @@ addFont('Any font link')
 #  Bootstrap link tags:
 link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css")
 script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
-script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js")
-        </code></pre>
-            <p>Regular HTML escape sequences and glyphs and regular tags like <a> can be used within the context manager or any functions that involve displaying on the web application, like</p>
-        <pre class=""><code>
-p('HTML <a href="some_link">tag<a/> within a paragraph <br> This sentence comes after a break')
+script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js")</code></pre>
+            <p>Regular HTML escape sequences and glyphs and regular tags like <inline>&lt;a&gt;</inline> can be used within the context manager or any functions that involve displaying on the web application, like</p>
+        <pre class="language-python"><code>p('HTML &lt;a href="some_link"&gt;tag&lt;/a&gt; within a paragraph &lt;br&gt; This sentence comes after a break')
 
 autoPrettify()
 # It handles tags beautifully, closes unclosed tags, and improves overall look of the HTML inline.
-# Use this at the end of all development outside all context managers. Using it inside or at a working stage will not work well. 
-# However if you want to add inline to the HTML after </html>, use autoPrettify(), add inline, and THEN use autoPrettify() again
+# Use this at the end of all development outside all context managers. 
+# Using it inside or at a working stage will not work well. 
+# However if you want to add inline to the HTML after &lt;/html&gt;, use autoPrettify(), add inline, and THEN use autoPrettify() AGAIN
 
-# Go to this to see the beauty of autoPrettify()
-        </code></pre>
+# Go to this to see the beauty of autoPrettify()</code></pre>
     </div>
     <hr>
     <pg_title>License</pg_title>
