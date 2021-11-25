@@ -88,7 +88,7 @@ meta(name="description", content="This is some description")
 meta(name="viewport", content="width=device-width", initial_scale=1.0)</code></pre>
 
             Underscores are used for hyphens (same applies to CSS) and Python-conficting arguments are prefixed with a double underscore.
-            Using argument text inside of a function defined in <code>@tag</code> will create a tag that opens, enters text, and closes. Something like this:
+            Using argument text inside of a function defined in <code class="language-py">@tag</code> will create a tag that opens, enters text, and closes. Something like this:
 
             <pre class="line-numbers"><code class="language-py">@tag
 def script(**kwargs):
@@ -99,7 +99,7 @@ script(__async="", src="some_src", text="some_text")</code></pre>
 
             <pre class="line-numbers"><code class="language-html">&lt;script async="" src="some_src"&gt;some_text&lt;/script&gt;</code></pre>
             
-            Want to add some JS? Simple enough. Just create a function for the <code>&lt;script&gt;</code> tag with a context manager behavior using <code>@CmTag</code> and you're golden.
+            Want to add some JS? Simple enough. Just create a function for the <code class="language-html">&lt;script&gt;</code> tag with a context manager behavior using <code class="language-py">@CmTag</code> and you're golden.
 
             <pre class="line-numbers"><code class="language-py">@CmTag
 def script(**kwargs):
@@ -128,8 +128,8 @@ with script():
     gtag('config', 'UA—XXXXXXXX-X');
 &lt;/script&gt;</code></pre>
 
-            <code>writeWA()</code> writes text entered into it into the HTML file as it is. <br>
-            You can add fonts using <code>addFont()</code>
+            <code class="language-py">writeWA()</code> writes text entered into it into the HTML file as it is. <br>
+            You can add fonts using <code class="language-py">addFont()</code>
 
             <pre class="line-numbers"><code class="language-py">addFont("https://fonts.googleapis.com/css2?family=Roboto&display=swap")</code></pre>
 
@@ -146,12 +146,12 @@ p('This is a paragraph!')
 d.css(background_color="#5886d1")</code></pre>
 
             Let's break this down but-by-bit:<br>
-            First, we start a div with a context manager behavior and give it an attribute <code>__class</code>, which is essentially the tag attribute class (remember Python-conflicting) arguments are prefixed by a double underscore. <br><br>
-            <code>p()</code> is a function, as the name suggests, to add a <code>&lt;p&gt;</code> tag. You can give the tag attributes with <code>**kwargs</code>, if you like.<br>
-            <code>p('Hello World!', __class='p_class')</code> is the same as <code>&lt;p class="p_class"&gt;Hello World!&lt;/p&gt;</code> <br><br>
-            After the paragraph, there's a <code>d.css()</code>. This adds CSS to the class mentioned within <code>div()</code>. If a class is mentioned, CSS is added to that class as the first priority. If an id is mentioned, CSS is added to that id as a second priority. If none of both are mentioned, CSS is just added to div. <br><br>
+            First, we start a div with a context manager behavior and give it an attribute <code class="language-py">__class</code>, which is essentially the tag attribute class (remember Python-conflicting) arguments are prefixed by a double underscore. <br><br>
+            <code class="language-py">p()</code> is a function, as the name suggests, to add a <code class="language-html">&lt;p&gt;</code> tag. You can give the tag attributes with <code class="language-py">**kwargs</code>, if you like.<br>
+            <code class="language-py">p('Hello World!', __class='p_class')</code> is the same as <code class="language-html">&lt;p class="p_class"&gt;Hello World!&lt;/p&gt;</code> <br><br>
+            After the paragraph, there's a <code class="language-py">d.css()</code>. This adds CSS to the class mentioned within <code class="language-py">div()</code>. If a class is mentioned, CSS is added to that class as the first priority. If an id is mentioned, CSS is added to that id as a second priority. If none of both are mentioned, CSS is just added to div. <br><br>
             The behavior of div shown above also applies to section.<br><br>
-            You can open a new tag with <code>Tag()</code>
+            You can open a new tag with <code class="language-py">Tag()</code>
 
             <pre class="line-numbers"><code class="language-py">with Tag('some_tag', id='some_id') as t:
     p('A paragraph in <some_tag>')
@@ -169,7 +169,7 @@ d.css(background_color="#5886d1")</code></pre>
 
             <pre class="line-numbers"><code class="language-py">autoPrettify()</code></pre>
             It takes in no arguments, but provides SO much to the code. <br>
-            Have a look at this example to see just how <code>autoPrettify()</code> works.
+            Have a look at this example to see just how <code class="language-py">autoPrettify()</code> works.
             <br>
             <!--Example Section-->
             <div class="flex flex-col text-left w-full">
@@ -178,7 +178,7 @@ d.css(background_color="#5886d1")</code></pre>
             Using this with Flask makes life easier if you're developing web applications with just HTML and CSS.
             It can also be used standalone in developing web applications. You can also use this as an alternative to jinja or Django or another templating engine, or use it along with one.
             It's got features like displaying a table on the web application by loading in a .csv file, adding a bulleted list (ol/ul) by just passing in a Python list, automatic support for CSS styling arguments and more! You can use for loops, variables, functions - you name it, you have it, with Sierra. 
-            Improvement in the overall look of the code and intelligent handling of tags with <code>autoPrettify()</code>, a feature like no other. Harness the power of Python for your web applications!
+            Improvement in the overall look of the code and intelligent handling of tags with <code class="language-py">autoPrettify()</code>, a feature like no other. Harness the power of Python for your web applications!
             <div class="bg-gray-100 text-gray-700 border-l-8 border-gray-500 p-4 mb-2">
                 <p class="font-bold">Note for users</p>
                 <p>This is a relatively new project, so we're developing at a fast pace. If you have any suggestions or issue or just want to open a discussion, feel free to do so!</p>
